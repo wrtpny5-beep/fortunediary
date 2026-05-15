@@ -70,8 +70,20 @@ input[type=text]:focus,input[type=date]:focus,textarea:focus{border-color:rgba(1
 input[type=date]::-webkit-calendar-picker-indicator{filter:invert(0.3) sepia(1) saturate(2) hue-rotate(240deg)}
 textarea{resize:vertical;min-height:88px;line-height:1.7}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.moon-display{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(220,210,255,0.5),rgba(200,230,255,0.5));border:0.5px solid rgba(200,180,255,0.4);border-radius:var(--rsm);padding:9px 13px}
-.moon-em{font-size:22px}.moon-nm{font-size:13px;color:#8070b8}
+.moon-display{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(220,210,255,0.5),rgba(200,230,255,0.5));border:0.5px solid rgba(200,180,255,0.4);border-radius:var(--rsm);padding:9px 13px;position:relative}
+.moon-em{font-size:22px}.moon-nm{font-size:13px;color:#8070b8;flex:1}
+.moon-hint-btn{background:none;border:none;cursor:pointer;font-size:14px;color:#b0a0d0;padding:0;line-height:1;opacity:0.7}
+.moon-hint-btn:hover{opacity:1}
+.moon-hint-popup{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:10;
+  background:rgba(240,235,255,0.95);backdrop-filter:blur(16px);
+  border:0.5px solid rgba(200,180,255,0.5);border-radius:var(--rsm);
+  padding:11px 13px;font-size:12px;color:#604880;line-height:1.8}
+.moon-hint-popup.vis{display:block;animation:fadeIn .2s ease}
+.moon-hint-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:2px}
+.moon-hint-em{font-size:14px;flex-shrink:0;width:18px}
+.moon-hint-kw{color:#8060b0;font-weight:500;margin-right:4px}
+.moon-hint-close{display:flex;justify-content:flex-end;margin-top:6px}
+.moon-hint-close button{background:none;border:none;cursor:pointer;font-size:12px;color:#b0a0c8;padding:0}
 .deck-sel{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .deck-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:var(--rpill);font-size:13px;cursor:pointer;border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#8070a8;transition:all .15s;font-family:'Noto Sans KR',sans-serif;backdrop-filter:blur(8px)}
 .deck-btn.at{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
@@ -186,7 +198,22 @@ textarea{resize:vertical;min-height:88px;line-height:1.7}
     <div class="r2">
       <div class="fg"><label class="fl">날짜</label><input type="date" id="dt"/></div>
       <div class="fg"><label class="fl">달의 위상</label>
-        <div class="moon-display"><span class="moon-em" id="moon-em">🌕</span><span class="moon-nm" id="moon-nm"></span></div>
+        <div class="moon-display">
+          <span class="moon-em" id="moon-em">🌕</span>
+          <span class="moon-nm" id="moon-nm"></span>
+          <button class="moon-hint-btn" onclick="toggleMoonHint(event)" title="달의 위상 설명">?</button>
+          <div class="moon-hint-popup" id="moon-hint-popup">
+            <div class="moon-hint-row"><span class="moon-hint-em">🌑</span><span><span class="moon-hint-kw">삭월</span>새 의도 심기, 새로운 시작</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌒</span><span><span class="moon-hint-kw">초승달</span>행동 시작, 소망 키우기</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌓</span><span><span class="moon-hint-kw">상현달</span>결단, 장애물 극복, 추진력</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌔</span><span><span class="moon-hint-kw">상현망</span>노력 집중, 목표에 집중</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌕</span><span><span class="moon-hint-kw">보름달</span>완성, 드러남, 에너지 최고조</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌖</span><span><span class="moon-hint-kw">하현망</span>감사, 나누기, 결실 수확</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌗</span><span><span class="moon-hint-kw">하현달</span>내려놓기, 정리, 반성</span></div>
+            <div class="moon-hint-row"><span class="moon-hint-em">🌘</span><span><span class="moon-hint-kw">그믐달</span>휴식, 치유, 놓아주기</span></div>
+            <div class="moon-hint-close"><button onclick="toggleMoonHint(event)">닫기 ✕</button></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="fg">
@@ -373,6 +400,15 @@ function getMoon(ds){
   if(pct<.275)return{e:'🌓',n:'상현달'};if(pct<.475)return{e:'🌔',n:'상현망'};
   if(pct<.525)return{e:'🌕',n:'보름달'};if(pct<.725)return{e:'🌖',n:'하현망'};
   if(pct<.75)return{e:'🌗',n:'하현달'};return{e:'🌘',n:'그믐달'};
+}
+function toggleMoonHint(e){
+  e.stopPropagation();
+  const p=document.getElementById('moon-hint-popup');
+  p.classList.toggle('vis');
+  if(p.classList.contains('vis')){
+    const close=()=>{p.classList.remove('vis');document.removeEventListener('click',close);};
+    setTimeout(()=>document.addEventListener('click',close),10);
+  }
 }
 function updMoon(ds){const m=getMoon(ds);document.getElementById('moon-em').textContent=m.e;document.getElementById('moon-nm').textContent=m.n;moon=m.e;}
 
