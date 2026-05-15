@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>리딩 일지 💜</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lav:#c5cfe8;--mint:#badde3;--rose:#ecd2d1;--sage:#d0e7ca;
+  --mint-deep:#4a9ba8;--lav-deep:#6068a8;--rose-deep:#a06068;--sage-deep:#5a8a54;
+  --mint-mid:#8dc8d0;--lav-mid:#a0a8d8;--rose-mid:#d09098;--sage-mid:#90be88;
+  --text:#2a3a3e;--text2:#4a6870;--text3:#80a0a8;
+  --r:14px;--rsm:9px;--rpill:999px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--text);min-height:100dvh;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 10%,rgba(255,182,213,0.7) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 0%,rgba(180,220,255,0.7) 0%,transparent 45%),
+    radial-gradient(ellipse at 0% 60%,rgba(210,235,255,0.6) 0%,transparent 45%),
+    radial-gradient(ellipse at 100% 50%,rgba(255,230,180,0.5) 0%,transparent 45%),
+    radial-gradient(ellipse at 50% 100%,rgba(200,210,255,0.7) 0%,transparent 50%),
+    radial-gradient(ellipse at 30% 70%,rgba(255,200,230,0.5) 0%,transparent 40%),
+    radial-gradient(ellipse at 70% 80%,rgba(180,240,220,0.5) 0%,transparent 40%),
+    linear-gradient(135deg,#f0e8f8 0%,#ddf0f8 30%,#e8e0f8 55%,#f8f0e8 80%,#e8f4e8 100%);
+  z-index:0;pointer-events:none}
+body::after{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse at 60% 30%,rgba(255,255,255,0.4) 0%,transparent 40%),
+    radial-gradient(ellipse at 20% 80%,rgba(200,180,255,0.3) 0%,transparent 35%);
+  animation:shimmer 8s ease-in-out infinite alternate;z-index:0;pointer-events:none}
+@keyframes shimmer{0%{opacity:.4;transform:scale(1) translate(0,0)}50%{opacity:.7;transform:scale(1.05) translate(-1%,1%)}100%{opacity:.4;transform:scale(1) translate(1%,-1%)}}
+#sparkle-canvas{position:fixed;inset:0;z-index:1;pointer-events:none}
+.app{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:20px 14px 80px}
+
+/* login screen */
+#login-screen{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:32px}
+#login-screen h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:500;color:transparent;background:linear-gradient(135deg,#a060c8,#60a0d8,#a080c8);-webkit-background-clip:text;background-clip:text;text-align:center;line-height:1.5}
+#login-screen p{font-size:14px;color:#8070a8;text-align:center;line-height:1.8}
+.btn-google{display:flex;align-items:center;gap:10px;padding:13px 24px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.4);background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);cursor:pointer;font-size:15px;font-weight:500;color:#5060a0;font-family:'Noto Sans KR',sans-serif;transition:all .2s}
+.btn-google:active{transform:scale(.98)}
+.btn-google svg{width:20px;height:20px;flex-shrink:0}
+
+/* status bar */
+.status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.logo{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:500;color:transparent;background:linear-gradient(135deg,#a060c8,#60a0d8,#a080c8);-webkit-background-clip:text;background-clip:text;display:flex;align-items:center;gap:8px}
+.user-area{display:flex;align-items:center;gap:8px}
+.user-photo{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(200,180,255,0.5);object-fit:cover}
+.user-name{font-size:12px;color:#9080b8;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-signout{font-size:11px;color:#b0a0c8;background:none;border:none;cursor:pointer;padding:2px 6px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.3)}
+.cnt{font-size:12px;color:#a080c0;background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);border:0.5px solid rgba(200,180,255,0.4);padding:3px 10px;border-radius:var(--rpill)}
+
+/* sync status */
+.sync{font-size:11px;color:#b0a0c8;text-align:right;margin-bottom:10px;height:16px;transition:opacity .3s}
+
+/* tabs */
+.tabs{display:flex;gap:5px;border-radius:var(--r);padding:4px;margin-bottom:18px;background:rgba(255,255,255,0.45);backdrop-filter:blur(16px);border:0.5px solid rgba(255,255,255,0.7)}
+.tab{flex:1;padding:9px 0;border-radius:var(--rsm);font-size:13px;cursor:pointer;border:none;background:transparent;color:rgba(80,60,100,0.6);transition:all .2s;font-family:'Noto Sans KR',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px}
+.tab.on{background:rgba(255,255,255,0.8);color:#7060a8;font-weight:500;box-shadow:0 2px 12px rgba(160,140,220,0.2)}
+
+.sec{display:none}.sec.on{display:block}
+.fg{margin-bottom:13px}
+.fl{display:block;font-size:11px;color:#9080b0;margin-bottom:5px;letter-spacing:.06em;text-transform:uppercase}
+input[type=text],input[type=date],textarea,select{width:100%;background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);border:0.5px solid rgba(200,180,255,0.35);border-radius:var(--rsm);padding:10px 13px;font-size:14px;color:var(--text);font-family:'Noto Sans KR',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none}
+input[type=text]:focus,input[type=date]:focus,textarea:focus{border-color:rgba(160,130,220,0.6);background:rgba(255,255,255,0.7)}
+input[type=date]::-webkit-calendar-picker-indicator{filter:invert(0.3) sepia(1) saturate(2) hue-rotate(240deg)}
+textarea{resize:vertical;min-height:88px;line-height:1.7}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.moon-display{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(220,210,255,0.5),rgba(200,230,255,0.5));border:0.5px solid rgba(200,180,255,0.4);border-radius:var(--rsm);padding:9px 13px}
+.moon-em{font-size:22px}.moon-nm{font-size:13px;color:#8070b8}
+.deck-sel{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.deck-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:var(--rpill);font-size:13px;cursor:pointer;border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#8070a8;transition:all .15s;font-family:'Noto Sans KR',sans-serif;backdrop-filter:blur(8px)}
+.deck-btn.at{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
+.deck-btn.ar{background:rgba(186,221,227,0.6);color:var(--mint-deep);border-color:var(--mint-mid)}
+.deck-btn.aa{background:rgba(208,231,202,0.6);color:var(--sage-deep);border-color:var(--sage-mid)}
+.dp{background:rgba(255,255,255,0.45);backdrop-filter:blur(12px);border:0.5px solid rgba(255,255,255,0.65);border-radius:var(--r);padding:11px;margin-bottom:8px}
+.dpl{font-size:12px;font-weight:500;margin-bottom:8px;letter-spacing:.02em}
+.lbt{color:var(--lav-deep)}.lbr{color:var(--mint-deep)}.lba{color:var(--sage-deep)}
+.sb{position:relative;margin-bottom:7px}
+.sb input{padding-left:30px;font-size:13px;padding-top:7px;padding-bottom:7px}
+.si{position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:14px;color:#b0a0c8;pointer-events:none}
+.cg{display:flex;flex-wrap:wrap;gap:4px;max-height:155px;overflow-y:auto;padding:2px}
+.cg::-webkit-scrollbar{width:3px}.cg::-webkit-scrollbar-thumb{background:rgba(160,140,220,0.3);border-radius:2px}
+.co{font-size:12px;padding:4px 9px;border-radius:var(--rpill);cursor:pointer;border:0.5px solid rgba(200,180,255,0.25);background:rgba(255,255,255,0.5);color:#7060a0;user-select:none;transition:all .12s;white-space:nowrap}
+.ro{font-size:18px;min-width:46px;text-align:center;padding:5px 6px;line-height:1.3}
+.rn{font-size:9px;display:block;margin-top:1px}
+.st{background:rgba(197,207,232,0.55);color:var(--lav-deep);border-color:var(--lav-mid)}
+.sr{background:rgba(186,221,227,0.55);color:var(--mint-deep);border-color:var(--mint-mid)}
+.sa{background:rgba(208,231,202,0.55);color:var(--sage-deep);border-color:var(--sage-mid)}
+.cr{display:flex;gap:6px;margin-top:7px}
+.cr input{flex:1;font-size:13px;padding:7px 11px}
+.cr button{padding:7px 11px;border-radius:var(--rsm);border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.5);color:#8070a8;cursor:pointer;font-size:12px;white-space:nowrap;font-family:'Noto Sans KR',sans-serif}
+.da{background:rgba(255,255,255,0.45);backdrop-filter:blur(8px);border:0.5px solid rgba(255,255,255,0.6);border-radius:var(--r);padding:11px;min-height:50px}
+.dh{font-size:13px;color:#b0a0c8}
+.dc{display:flex;flex-wrap:wrap;gap:5px}
+.cb{display:inline-flex;align-items:center;gap:4px;border-radius:var(--rpill);padding:4px 9px;font-size:12px;max-width:200px}
+.cb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cb button{background:none;border:none;cursor:pointer;font-size:13px;line-height:1;padding:0;color:inherit;opacity:.5;margin-left:1px}
+.bt{background:rgba(197,207,232,0.55);color:var(--lav-deep);border:0.5px solid var(--lav-mid)}
+.br{background:rgba(186,221,227,0.55);color:var(--mint-deep);border:0.5px solid var(--mint-mid)}
+.ba{background:rgba(208,231,202,0.55);color:var(--sage-deep);border:0.5px solid var(--sage-mid)}
+.mhint{display:none;margin-top:8px;background:linear-gradient(135deg,rgba(240,232,255,0.75),rgba(220,235,255,0.75));backdrop-filter:blur(12px);border:0.5px solid rgba(200,180,255,0.45);border-radius:var(--rsm);padding:11px 13px;font-size:13px;color:#604880;line-height:1.75;position:relative}
+.mhint.vis{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.mhint-name{font-weight:500;color:#8060b0;margin-bottom:5px;font-size:12px;letter-spacing:.04em}
+.mhint-close{position:absolute;right:10px;top:8px;background:none;border:none;cursor:pointer;color:#b090d0;font-size:16px;line-height:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--rpill);font-size:13px;cursor:pointer;border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#9080b0;user-select:none;transition:all .15s;font-family:'Noto Sans KR',sans-serif;backdrop-filter:blur(8px)}
+.chip.on{background:rgba(236,210,209,0.65);color:var(--rose-deep);border-color:var(--rose-mid)}
+.bsave{width:100%;padding:13px;border-radius:var(--r);font-size:15px;font-weight:500;cursor:pointer;background:linear-gradient(135deg,rgba(197,207,232,0.7),rgba(186,221,227,0.7),rgba(208,231,202,0.7));color:#5060a0;border:0.5px solid rgba(255,255,255,0.8);margin-top:8px;transition:all .2s;font-family:'Noto Serif KR',serif;letter-spacing:.04em;backdrop-filter:blur(8px)}
+.bsave:active{opacity:.85;transform:scale(.99)}
+.lsb{position:relative;margin-bottom:9px}
+.lsb input{padding-left:34px}
+.lsb .si{font-size:16px}
+.fchips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}
+.fc{font-size:12px;padding:5px 12px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#9080b0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;transition:all .15s;backdrop-filter:blur(8px)}
+.fc.on{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
+.elist{display:flex;flex-direction:column;gap:10px}
+.ecard{background:rgba(255,255,255,0.5);backdrop-filter:blur(14px);border:0.5px solid rgba(255,255,255,0.7);border-left:2.5px solid rgba(180,160,230,0.5);border-radius:var(--r);padding:13px 15px;cursor:pointer;transition:all .2s}
+.ecard:active{background:rgba(255,255,255,0.65)}
+.ehdr{display:flex;align-items:center;gap:7px;margin-bottom:7px;flex-wrap:wrap}
+.edate{font-size:12px;color:#b0a0c8}
+.dpill{font-size:11px;padding:2px 8px;border-radius:var(--rpill)}
+.pt{background:rgba(197,207,232,0.5);color:var(--lav-deep)}.pr{background:rgba(186,221,227,0.5);color:var(--mint-deep)}.pa{background:rgba(208,231,202,0.5);color:var(--sage-deep)}
+.eq{font-size:15px;font-weight:500;color:#3a2a5e;margin-bottom:6px;font-family:'Noto Serif KR',serif}
+.ecards{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.esum{font-size:13px;color:#6a5888;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.etags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.etag{font-size:11px;padding:2px 8px;border-radius:var(--rpill);background:rgba(236,210,209,0.55);color:var(--rose-deep);border:0.5px solid var(--rose-mid)}
+.empty{text-align:center;padding:3.5rem 1rem;color:#b0a0c8}
+.empty-ic{font-size:36px;display:block;margin-bottom:12px}
+.mover{display:none;position:fixed;inset:0;background:rgba(80,60,120,0.3);backdrop-filter:blur(4px);z-index:100;align-items:flex-end;justify-content:center}
+.mover.on{display:flex}
+.modal{background:rgba(245,240,255,0.92);backdrop-filter:blur(24px);border:0.5px solid rgba(255,255,255,0.8);border-top:2px solid rgba(180,160,230,0.5);border-radius:var(--r) var(--r) 0 0;padding:18px 18px 38px;width:100%;max-width:520px;max-height:85dvh;overflow-y:auto;animation:su .22s ease}
+@keyframes su{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.mhandle{width:34px;height:3px;background:rgba(180,160,230,0.4);border-radius:2px;margin:0 auto 14px}
+.mhd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:8px}
+.mtitle{font-family:'Noto Serif KR',serif;font-size:16px;color:#3a2a5e}
+.mclose{background:none;border:none;cursor:pointer;color:#b0a0c8;font-size:20px;line-height:1;padding:0}
+.mpills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}
+.ds{margin-bottom:13px}
+.dl{font-size:11px;color:#b0a0c8;margin-bottom:3px;letter-spacing:.05em;text-transform:uppercase}
+.dv{font-size:14px;color:#3a2a5e;line-height:1.8}
+.bdel{width:100%;padding:10px;border-radius:var(--rsm);border:0.5px solid rgba(210,140,140,0.3);background:rgba(236,210,209,0.4);color:var(--rose-deep);cursor:pointer;font-size:13px;margin-top:13px;font-family:'Noto Sans KR',sans-serif}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(160,130,210,0.88);backdrop-filter:blur(12px);color:#fff;padding:10px 20px;border-radius:var(--rpill);font-size:13px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;border:0.5px solid rgba(255,255,255,0.4)}
+.toast.on{opacity:1}
+@media(min-width:520px){.modal{border-radius:var(--r);margin-bottom:40px}.mover{align-items:center}}
+</style>
+</head>
+<body>
+<canvas id="sparkle-canvas"></canvas>
+
+<!-- 로그인 화면 -->
+<div id="login-screen">
+  <h1>✦ 리딩 일지</h1>
+  <p>타로, 룬스톤, 앤젤엔써<br>리딩 기록을 어디서든 함께해요</p>
+  <button class="btn-google" onclick="signInWithGoogle()">
+    <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    Google로 시작하기
+  </button>
+</div>
+
+<!-- 메인 앱 -->
+<div class="app" id="main-app" style="display:none">
+  <div class="status-bar">
+    <div class="logo">✦ 리딩 일지</div>
+    <div class="user-area">
+      <img class="user-photo" id="user-photo" src="" alt=""/>
+      <span class="user-name" id="user-name"></span>
+      <button class="btn-signout" onclick="signOut()">로그아웃</button>
+    </div>
+  </div>
+  <div class="sync" id="sync-status"></div>
+
+  <div class="tabs">
+    <button class="tab on" onclick="switchTab('w')">💜 새 기록</button>
+    <button class="tab" onclick="switchTab('l')">💜 기록 보기</button>
+  </div>
+
+  <div id="sw" class="sec on">
+    <div class="fg"><label class="fl">오늘의 질문 · 의도</label><input type="text" id="q" placeholder="무엇을 알고 싶었나요?"/></div>
+    <div class="r2">
+      <div class="fg"><label class="fl">날짜</label><input type="date" id="dt"/></div>
+      <div class="fg"><label class="fl">달의 위상</label>
+        <div class="moon-display"><span class="moon-em" id="moon-em">🌕</span><span class="moon-nm" id="moon-nm"></span></div>
+      </div>
+    </div>
+    <div class="fg">
+      <label class="fl">사용한 덱 <span style="opacity:.5;font-size:10px">· 복수 선택 가능</span></label>
+      <div class="deck-sel">
+        <button class="deck-btn" data-deck="t" onclick="toggleDeck(this)">🃏 타로</button>
+        <button class="deck-btn" data-deck="r" onclick="toggleDeck(this)">ᚱ 룬스톤</button>
+        <button class="deck-btn" data-deck="a" onclick="toggleDeck(this)">✦ 앤젤엔써</button>
+      </div>
+      <div id="panels"></div>
+    </div>
+    <div id="mhint-box" class="mhint">
+      <button class="mhint-close" onclick="closeHint()">✕</button>
+      <div class="mhint-name" id="mhint-name"></div>
+      <div id="mhint-text"></div>
+    </div>
+    <div class="fg"><label class="fl">선택한 카드 · 룬</label><div class="da" id="da"><span class="dh">덱을 선택하고 카드를 골라주세요</span></div></div>
+    <div class="fg"><label class="fl">해석 · 느낌</label><textarea id="interp" placeholder="카드가 전달한 메시지, 직관, 감정을 자유롭게 적어보세요..."></textarea></div>
+    <div class="fg"><label class="fl">태그</label>
+      <div class="chips" id="tags">
+        <span class="chip" onclick="toggleTag(this)" data-tag="연애">💜 연애</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="직장">💜 직장</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="창작">💜 창작</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="내면">💜 내면</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="관계">💜 관계</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="미래">💜 미래</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="에너지">💜 에너지</span>
+        <span class="chip" onclick="toggleTag(this)" data-tag="치유">💜 치유</span>
+      </div>
+    </div>
+    <button class="bsave" onclick="save()">✦ 기록 저장</button>
+  </div>
+
+  <div id="sl" class="sec">
+    <div class="lsb"><span class="si">⌕</span><input type="text" id="srch" placeholder="질문, 카드, 키워드 검색..." oninput="renderList()"/></div>
+    <div class="fchips">
+      <button class="fc on" data-f="all" onclick="setF(this,'all')">💜 전체</button>
+      <button class="fc" data-f="t" onclick="setF(this,'t')">💜 타로</button>
+      <button class="fc" data-f="r" onclick="setF(this,'r')">💜 룬스톤</button>
+      <button class="fc" data-f="a" onclick="setF(this,'a')">💜 앤젤엔써</button>
+    </div>
+    <div class="elist" id="elist"></div>
+  </div>
+</div>
+
+<div class="mover" id="mov" onclick="closeMBg(event)"><div class="modal" id="mc"></div></div>
+<div class="toast" id="toast"></div>
+
+<!-- Firebase -->
+<script type="module">
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import{getAuth,GoogleAuthProvider,signInWithPopup,signOut as fbSignOut,onAuthStateChanged}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import{getFirestore,collection,addDoc,getDocs,deleteDoc,doc,query,orderBy,serverTimestamp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const firebaseConfig={
+  apiKey:"AIzaSyCN2Yf54AwJlyeEmr9ylGwO6ZPCUSyiK3w",
+  authDomain:"fortunetelling-ae36f.firebaseapp.com",
+  projectId:"fortunetelling-ae36f",
+  storageBucket:"fortunetelling-ae36f.firebasestorage.app",
+  messagingSenderId:"785548535092",
+  appId:"1:785548535092:web:96cd915c0cbe94e68ff161"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+const provider=new GoogleAuthProvider();
+provider.setCustomParameters({prompt:'select_account'});
+
+let currentUser=null;
+
+window.signInWithGoogle=async()=>{
+  try{await signInWithPopup(auth,provider);}
+  catch(e){console.error(e);showToast('로그인 실패. 다시 시도해주세요');}
+};
+window.signOut=async()=>{
+  await fbSignOut(auth);
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('main-app').style.display='none';
+  entries=[];
+};
+
+onAuthStateChanged(auth,async user=>{
+  if(user){
+    currentUser=user;
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('main-app').style.display='block';
+    document.getElementById('user-photo').src=user.photoURL||'';
+    document.getElementById('user-name').textContent=user.displayName?.split(' ')[0]||'';
+    await loadEntries();
+  } else {
+    currentUser=null;
+    document.getElementById('login-screen').style.display='flex';
+    document.getElementById('main-app').style.display='none';
+  }
+});
+
+async function loadEntries(){
+  setSyncStatus('불러오는 중...');
+  try{
+    const uid=currentUser.uid;
+    const q=query(collection(db,`users/${uid}/entries`),orderBy('createdAt','desc'));
+    const snap=await getDocs(q);
+    entries=snap.docs.map(d=>({...d.data(),_docId:d.id}));
+    setSyncStatus('✦ 동기화됨');
+    setTimeout(()=>setSyncStatus(''),2000);
+  }catch(e){setSyncStatus('⚠ 불러오기 실패');console.error(e);}
+}
+
+window._saveToFirebase=async(entry)=>{
+  if(!currentUser)return;
+  setSyncStatus('저장 중...');
+  try{
+    const uid=currentUser.uid;
+    const ref=await addDoc(collection(db,`users/${uid}/entries`),{
+      ...entry,createdAt:serverTimestamp()
+    });
+    entries[0]._docId=ref.id;
+    setSyncStatus('✦ 저장됨');
+    setTimeout(()=>setSyncStatus(''),2000);
+  }catch(e){setSyncStatus('⚠ 저장 실패');console.error(e);}
+};
+
+window._deleteFromFirebase=async(docId)=>{
+  if(!currentUser||!docId)return;
+  const uid=currentUser.uid;
+  try{await deleteDoc(doc(db,`users/${uid}/entries`,docId));}
+  catch(e){console.error(e);}
+};
+
+function setSyncStatus(msg){document.getElementById('sync-status').textContent=msg;}
+</script>
+
+<script>
+// ── SPARKLE ──
+(function(){
+  const cvs=document.getElementById('sparkle-canvas');
+  const ctx=cvs.getContext('2d');
+  let W,H,sparks=[];
+  function resize(){W=cvs.width=window.innerWidth;H=cvs.height=window.innerHeight;}
+  window.addEventListener('resize',resize);resize();
+  function mkSpark(){return{x:Math.random()*W,y:Math.random()*H,size:Math.random()*3+1,alpha:0,maxAlpha:Math.random()*0.7+0.3,life:Math.random()*200+100,age:0};}
+  for(let i=0;i<28;i++){const s=mkSpark();s.age=Math.random()*s.life;sparks.push(s);}
+  function drawStar(x,y,size,alpha){
+    ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle='white';ctx.lineWidth=size*0.4;ctx.lineCap='round';
+    [[0,-size*2.5,0,-size*0.4],[0,size*2.5,0,size*0.4],[-size*2.5,0,-size*0.4,0],[size*2.5,0,size*0.4,0]].forEach(([x1,y1,x2,y2])=>{ctx.beginPath();ctx.moveTo(x+x1,y+y1);ctx.lineTo(x+x2,y+y2);ctx.stroke();});
+    ctx.restore();
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    sparks.forEach((s,i)=>{s.age++;const t=s.age/s.life;s.alpha=t<.3?(t/.3)*s.maxAlpha:t>.7?((1-t)/.3)*s.maxAlpha:s.maxAlpha;drawStar(s.x,s.y,s.size,s.alpha);if(s.age>=s.life)sparks[i]=mkSpark();});
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// ── DATA ──
+const MAJOR=["바보 (The Fool)","마법사 (The Magician)","여사제 (The High Priestess)","여황제 (The Empress)","황제 (The Emperor)","교황 (The Hierophant)","연인 (The Lovers)","전차 (The Chariot)","힘 (Strength)","은둔자 (The Hermit)","운명의 수레바퀴 (Wheel of Fortune)","정의 (Justice)","매달린 사람 (The Hanged Man)","죽음 (Death)","절제 (Temperance)","악마 (The Devil)","탑 (The Tower)","별 (The Star)","달 (The Moon)","태양 (The Sun)","심판 (Judgement)","세계 (The World)"];
+const SUITS=["완드","컵","소드","펜타클"],RANKS=["에이스","2","3","4","5","6","7","8","9","10","페이지","나이트","퀸","킹"];
+const MINOR=[];SUITS.forEach(s=>RANKS.forEach(r=>MINOR.push(r+" 오브 "+s)));
+const TAROT=[...MAJOR,...MINOR];
+const RUNES=[{s:"ᚠ",n:"Fehu"},{s:"ᚢ",n:"Uruz"},{s:"ᚦ",n:"Thurisaz"},{s:"ᚨ",n:"Ansuz"},{s:"ᚱ",n:"Raidho"},{s:"ᚲ",n:"Kenaz"},{s:"ᚷ",n:"Gebo"},{s:"ᚹ",n:"Wunjo"},{s:"ᚺ",n:"Hagalaz"},{s:"ᚾ",n:"Nauthiz"},{s:"ᛁ",n:"Isa"},{s:"ᛃ",n:"Jera"},{s:"ᛇ",n:"Eihwaz"},{s:"ᛈ",n:"Perthro"},{s:"ᛉ",n:"Algiz"},{s:"ᛊ",n:"Sowilo"},{s:"ᛏ",n:"Tiwaz"},{s:"ᛒ",n:"Berkano"},{s:"ᛖ",n:"Ehwaz"},{s:"ᛗ",n:"Mannaz"},{s:"ᛚ",n:"Laguz"},{s:"ᛜ",n:"Ingwaz"},{s:"ᛞ",n:"Dagaz"},{s:"ᛟ",n:"Othala"}];
+const ANGEL=["Yes","No","Absolutely Yes","Absolutely Not","Take Action","Don't Stop","Not the Right Time","Wait and See","There's Something Better","Changes are Coming","A Happy Surprise","Signs and Synchronicities","Trust Your Intuition","Ask Your Angels","Communicate","Listen","Let Go","Forgiveness","Recovery","Improving Health","Romance","Abundance","Success","Opportunity","Direction","Reconsider","Remain Positive","Believe","Peaceful Resolution","Situation Will Improve","Need to Worry","Unlikely","Months","Weeks","Soon","Take Action Now","New Beginnings","Magical Manifestation","Divine Timing","Stay the Course","Step Back","Boundaries","Inner Wisdom","Angel Messages"];
+const TM={"바보 (The Fool)":"새로운 시작, 순수한 가능성, 자유로운 영혼. 두려움 없이 도약할 때.","마법사 (The Magician)":"의지력, 창의성, 실현 능력. 가진 것으로 무엇이든 만들 수 있다.","여사제 (The High Priestess)":"직관, 내면의 지혜, 숨겨진 진실. 조용히 내면의 목소리를 들어라.","여황제 (The Empress)":"풍요, 창조, 모성. 자연스럽게 꽃피는 성장과 감각적 기쁨.","황제 (The Emperor)":"권위, 구조, 안정. 체계와 규율로 현실을 단단히 구축하라.","교황 (The Hierophant)":"전통, 가르침, 영적 지도. 배움과 공동체의 지혜를 따르라.","연인 (The Lovers)":"선택, 가치관의 일치, 깊은 연결. 진심으로 원하는 것을 선택하라.","전차 (The Chariot)":"의지력, 승리, 전진. 내면의 갈등을 다스리며 목표를 향해 나아가라.","힘 (Strength)":"내면의 힘, 인내, 부드러운 용기. 강압이 아닌 사랑으로 다스려라.","은둔자 (The Hermit)":"내면 탐구, 고독, 지혜 찾기. 혼자만의 시간에서 답이 온다.","운명의 수레바퀴 (Wheel of Fortune)":"변화, 순환, 운명의 전환. 흐름을 타고 변화를 받아들여라.","정의 (Justice)":"균형, 진실, 공정한 결과. 행동에는 반드시 결과가 따른다.","매달린 사람 (The Hanged Man)":"기다림, 다른 시각, 자발적 희생. 잠시 멈추고 새로운 각도로 보라.","죽음 (Death)":"변환, 끝과 시작, 놓아주기. 묵은 것을 떠나보내야 새것이 온다.","절제 (Temperance)":"균형, 조화, 인내. 천천히, 꾸준히, 중용의 길을 걸어라.","악마 (The Devil)":"집착, 속박, 물질적 욕망. 스스로 만든 사슬을 인식하라.","탑 (The Tower)":"갑작스러운 변화, 붕괴, 계시. 거짓된 구조가 무너지며 진실이 드러난다.","별 (The Star)":"희망, 치유, 영감. 어둠 뒤에 빛나는 별처럼 희망을 잃지 마라.","달 (The Moon)":"무의식, 환상, 불안. 두려움과 환상 너머의 진실을 직시하라.","태양 (The Sun)":"기쁨, 성공, 활력. 밝고 따뜻한 에너지가 가득한 시간.","심판 (Judgement)":"부활, 각성, 소명. 진정한 자아의 부름에 응답할 때.","세계 (The World)":"완성, 통합, 성취. 하나의 사이클이 원만하게 마무리된다."};
+const WANDS=["에이스: 영감의 불꽃, 새 프로젝트의 시작.","2: 미래 계획, 더 넓은 세계로의 확장.","3: 기다림, 진행 중인 계획의 성장.","4: 축하, 안정, 공동체의 기쁨.","5: 갈등, 경쟁, 소통의 어려움.","6: 승리, 인정받음, 자신감.","7: 방어, 용기 있게 입장을 지켜라.","8: 빠른 움직임, 전달, 가속.","9: 회복력, 인내, 끝까지 버텨라.","10: 과부하, 책임감의 무게.","페이지: 열정적 탐구, 새로운 아이디어.","나이트: 충동적 행동, 모험과 열정.","퀸: 자신감 있는 창의성, 따뜻한 카리스마.","킹: 비전 있는 리더십, 열정의 완숙."];
+const CUPS=["에이스: 새로운 감정, 사랑의 시작, 직관의 선물.","2: 파트너십, 상호 이끌림, 연결.","3: 우정, 축하, 공동체의 기쁨.","4: 권태, 내면 탐구, 놓친 기회.","5: 슬픔, 상실, 남은 것에 집중하라.","6: 향수, 추억, 순수한 기쁨.","7: 환상, 선택의 혼란, 현실 직시.","8: 떠남, 더 깊은 것을 찾아 나서기.","9: 만족, 소원 성취, 내면의 풍요.","10: 완전한 행복, 가족, 조화로운 완성.","페이지: 감수성, 창의적 메시지, 직관 깨우기.","나이트: 낭만적 추구, 감정적 여정.","퀸: 공감 능력, 직관적 지혜, 감정적 성숙.","킹: 감정의 균형, 현명한 마음, 성숙한 사랑."];
+const SWORDS=["에이스: 명료함, 진실, 새로운 생각의 돌파구.","2: 결정 장애, 교착 상태, 내면의 갈등.","3: 상처, 슬픔, 진실이 가져오는 아픔.","4: 휴식, 회복, 명상.","5: 갈등 후 손실, 공허한 승리.","6: 전환, 더 나은 곳으로 이동.","7: 전략, 독립적 행동, 숨겨진 계획.","8: 자기 제한, 두려움에 의한 속박.","9: 불안, 밤의 걱정, 최악을 상상하는 마음.","10: 끝, 배신, 완전한 마무리.","페이지: 호기심, 비판적 사고, 새로운 정보.","나이트: 빠른 행동, 논쟁적 에너지, 직진.","퀸: 명료한 판단, 독립적 지성, 날카로운 통찰.","킹: 지성적 권위, 공정한 판단, 명료한 소통."];
+const PENTS=["에이스: 물질적 시작, 새로운 기회, 씨앗.","2: 균형 잡기, 멀티태스킹, 유연한 적응.","3: 협력, 기술의 인정, 팀워크.","4: 안정에 대한 집착, 지나친 절약.","5: 결핍, 걱정, 도움을 구하라.","6: 나눔, 관대함, 균형 있는 주고받기.","7: 인내, 장기적 투자, 성장 중.","8: 숙련, 장인정신, 꾸준한 노력.","9: 풍요, 자립, 성취한 안락함.","10: 유산, 가족의 안정, 물질적 완성.","페이지: 실용적 학습, 새로운 기술 습득.","나이트: 신뢰할 수 있는 행동, 꾸준한 전진.","퀸: 실용적 돌봄, 현명한 번영 관리.","킹: 물질적 성공, 신뢰, 안정된 리더십."];
+function getMinorMeaning(name){const p=name.split(" 오브 ");if(p.length<2)return null;const ri=RANKS.indexOf(p[0]);if(ri<0)return null;return({완드:WANDS,컵:CUPS,소드:SWORDS,펜타클:PENTS}[p[1]]||[])[ri]||null;}
+function getMeaning(d,name){
+  if(d==='t')return TM[name]||getMinorMeaning(name)||null;
+  if(d==='r'){const RM={"Fehu":"풍요와 번영. 소유한 것을 잘 관리하고 순환시켜라.","Uruz":"원초적 힘과 생명력. 변화를 통한 성장.","Thurisaz":"보호, 장벽, 반응하는 힘. 서두르지 말고 준비될 때까지 기다려라.","Ansuz":"신성한 메시지, 소통, 지혜. 귀를 기울여라—중요한 신호가 온다.","Raidho":"여정, 리듬, 올바른 방향. 삶의 흐름 속에서 자신의 길을 유지하라.","Kenaz":"창의적 불꽃, 지식, 변환. 내면의 불을 켜고 배움과 창조에 집중하라.","Gebo":"선물, 파트너십, 균형 있는 교환. 받는 것과 주는 것의 아름다운 균형.","Wunjo":"기쁨, 조화, 소원 성취. 노력이 결실을 맺고 행복이 찾아온다.","Hagalaz":"혼란, 시련, 변화의 힘. 폭풍을 통과해야 새로운 시작이 온다.","Nauthiz":"필요, 제약, 내면의 강함. 어려움 속에서 진짜 힘이 드러난다.","Isa":"정지, 내면 응시, 기다림. 모든 것이 얼어붙은 듯 느껴질 때—고요히 기다려라.","Jera":"수확, 사이클, 결실. 뿌린 씨앗이 제때 열매 맺는다.","Eihwaz":"변환, 연결, 인내. 지속적 변화와 깊은 연결.","Perthro":"신비, 운명, 숨겨진 것. 아직 드러나지 않은 것들이 있다.","Algiz":"보호, 수호, 신성한 연결. 높은 차원의 힘이 당신을 지키고 있다.","Sowilo":"태양, 성공, 생명력. 밝은 에너지가 길을 비추고 목표를 향해 나아간다.","Tiwaz":"정의, 희생, 리더십. 옳은 일을 위해 용감하게 나서라.","Berkano":"탄생, 성장, 치유. 새로운 시작과 부드러운 보살핌의 에너지.","Ehwaz":"움직임, 파트너십, 신뢰. 조화로운 협력과 꾸준한 전진.","Mannaz":"인간성, 자아, 공동체. 자신을 알고 타인과 연결하라.","Laguz":"물, 직관, 무의식. 감정의 흐름을 따라가라—직관을 믿어라.","Ingwaz":"내면의 성장, 잠재력. 씨앗이 내부에서 준비되고 있다.","Dagaz":"새벽, 돌파구, 깨달음. 어둠이 끝나고 빛이 밝아온다.","Othala":"유산, 뿌리, 고향. 조상과 연결되고 근원으로 돌아가라."};return RM[name]||null;}
+  if(d==='a'){const AM={"Yes":"천사들이 긍정적인 신호를 보내고 있어요. 앞으로 나아가세요.","No":"지금은 아닌 듯해요. 더 나은 방향을 찾아보세요.","Absolutely Yes":"강력한 긍정! 망설임 없이 행동할 때예요.","Absolutely Not":"강력한 경고. 이 방향은 지금 당신에게 맞지 않아요.","Take Action":"생각보다 행동이 필요한 시점. 지금 움직이세요.","Don't Stop":"포기하지 마세요. 계속 나아가면 결실이 옵니다.","Not the Right Time":"아직 때가 아니에요. 준비가 더 필요해요.","Wait and See":"조금 더 상황을 지켜보세요. 성급히 결정하지 마세요.","There's Something Better":"지금 원하는 것보다 더 좋은 것이 기다리고 있어요.","Changes are Coming":"변화의 바람이 불고 있어요. 유연하게 준비하세요.","A Happy Surprise":"예상치 못한 기쁜 일이 찾아올 거예요.","Signs and Synchronicities":"주변의 신호들에 주의를 기울이세요. 천사들이 안내하고 있어요.","Trust Your Intuition":"머리보다 마음의 소리를 따르세요. 당신의 직관은 맞아요.","Ask Your Angels":"도움을 요청하세요. 천사들은 언제나 응답할 준비가 되어 있어요.","Communicate":"솔직하게 표현하세요. 소통이 상황을 해결해요.","Listen":"말하기보다 듣는 시간이 필요해요. 조용히 귀 기울여보세요.","Let Go":"붙잡고 있는 것을 놓아주세요. 놓아야 새로운 것이 들어와요.","Forgiveness":"용서가 당신을 자유롭게 해요. 자신에 대한 용서도 포함해요.","Recovery":"치유의 과정 중에 있어요. 충분히 쉬고 자신을 돌보세요.","Improving Health":"건강에 집중할 시간이에요. 몸과 마음에 더 신경 쓰세요.","Romance":"사랑의 에너지가 활성화되어 있어요. 마음을 열어두세요.","Abundance":"풍요로움이 흘러들어오고 있어요. 받아들일 준비를 하세요.","Success":"노력이 결실을 맺어요. 성공이 가까이 있어요.","Opportunity":"좋은 기회가 왔거나 오고 있어요. 놓치지 마세요.","Direction":"방향을 명확히 할 때예요. 무엇을 원하는지 마음을 정하세요.","Reconsider":"다시 한번 생각해보세요. 놓친 부분이 있을 수 있어요.","Remain Positive":"긍정적인 마음을 유지하세요. 에너지가 현실을 만들어요.","Believe":"믿음을 가지세요. 당신 자신과 우주의 계획을 신뢰하세요.","Peaceful Resolution":"갈등이 평화롭게 해결될 거예요. 부드럽게 접근하세요.","Situation Will Improve":"지금 어렵더라도 곧 나아질 거예요. 조금만 더 버티세요.","Need to Worry":"우려가 근거 없지 않아요. 무엇이 걱정인지 천천히 살펴보세요.","Unlikely":"가능성이 낮아요. 에너지를 다른 방향으로 돌려보는 게 나을 수 있어요.","Months":"몇 달 안에 변화나 결과가 나타날 거예요.","Weeks":"몇 주 내에 상황이 전개될 거예요.","Soon":"곧 이루어질 거예요. 기대하세요.","Take Action Now":"지금 이 순간이 행동해야 할 때예요. 망설이지 마세요.","New Beginnings":"새로운 챕터가 시작되고 있어요. 기꺼이 시작하세요.","Magical Manifestation":"생각과 의도가 현실로 이루어지고 있어요. 긍정적으로 집중하세요.","Divine Timing":"모든 것은 완벽한 타이밍에 이루어져요. 서두르지 말고 신뢰하세요.","Stay the Course":"지금 가는 길이 맞아요. 방향을 바꾸지 말고 계속 나아가세요.","Step Back":"잠시 물러서서 큰 그림을 보세요. 거리를 두면 더 잘 보여요.","Boundaries":"경계를 설정할 필요가 있어요. 나를 지키는 것이 사랑이에요.","Inner Wisdom":"외부보다 내면에 답이 있어요. 깊이 들여다보세요.","Angel Messages":"천사들이 강하게 소통하려 하고 있어요. 주변의 신호들에 주목하세요."};return AM[name]||null;}
+  return null;
+}
+
+const DM={t:{label:'타로',act:'at',sel:'st',bad:'bt',pil:'pt',lbl:'lbt'},r:{label:'룬스톤',act:'ar',sel:'sr',bad:'br',pil:'pr',lbl:'lbr'},a:{label:'앤젤엔써',act:'aa',sel:'sa',bad:'ba',pil:'pa',lbl:'lba'}};
+let entries=[],drawn=[],moon='',flt='all',ads=new Set(),dsq={t:'',r:'',a:''};
+
+function getMoon(ds){
+  const d=ds?new Date(ds+'T12:00:00'):new Date(),ref=new Date('2000-01-06T18:14:00Z'),cyc=29.53058867,diff=(d-ref)/86400000;
+  const p=((diff%cyc)+cyc)%cyc,pct=p/cyc;
+  if(pct<.025||pct>=.975)return{e:'🌑',n:'삭월'};if(pct<.25)return{e:'🌒',n:'초승달'};
+  if(pct<.275)return{e:'🌓',n:'상현달'};if(pct<.475)return{e:'🌔',n:'상현망'};
+  if(pct<.525)return{e:'🌕',n:'보름달'};if(pct<.725)return{e:'🌖',n:'하현망'};
+  if(pct<.75)return{e:'🌗',n:'하현달'};return{e:'🌘',n:'그믐달'};
+}
+function updMoon(ds){const m=getMoon(ds);document.getElementById('moon-em').textContent=m.e;document.getElementById('moon-nm').textContent=m.n;moon=m.e;}
+
+function init(){
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('dt').value=today;
+  document.getElementById('dt').addEventListener('change',e=>updMoon(e.target.value));
+  updMoon(today);
+}
+
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('on',(i===0&&t==='w')||(i===1&&t==='l')));
+  document.getElementById('sw').classList.toggle('on',t==='w');
+  document.getElementById('sl').classList.toggle('on',t==='l');
+  if(t==='l')renderList();
+}
+function toggleDeck(btn){
+  const d=btn.dataset.deck,m=DM[d];
+  if(ads.has(d)){ads.delete(d);btn.classList.remove(m.act);}else{ads.add(d);btn.classList.add(m.act);}
+  renderPanels();
+}
+function renderPanels(){document.getElementById('panels').innerHTML=[...ads].map(buildPanel).join('');}
+function buildPanel(d){
+  const m=DM[d];
+  if(d==='t'){const q=dsq.t.toLowerCase(),f=TAROT.filter(c=>!q||c.toLowerCase().includes(q));const opts=f.map(c=>{const s=drawn.some(x=>x.d==='t'&&x.n===c);return'<span class="co'+(s?' st':'')+'" onclick="pickCard(\'t\',\''+c.replace(/'/g,"\\'")+'\')" >'+c+'</span>';}).join('');return'<div class="dp" id="panel-t"><div class="dpl lbt">🃏 타로 (78장)</div><div class="sb"><span class="si">⌕</span><input type="text" placeholder="카드 검색..." value="'+dsq.t+'" oninput="dsq.t=this.value;repanel(\'t\')"/></div><div class="cg">'+opts+'</div></div>';}
+  if(d==='r'){const q=dsq.r.toLowerCase(),f=RUNES.filter(r=>!q||r.n.toLowerCase().includes(q)||r.s.includes(q));const opts=f.map(r=>{const s=drawn.some(x=>x.d==='r'&&x.n===r.n);return'<span class="co ro'+(s?' sr':'')+'" onclick="pickCard(\'r\',\''+r.n+'\')" title="'+r.n+'">'+r.s+'<span class="rn">'+r.n+'</span></span>';}).join('');return'<div class="dp" id="panel-r"><div class="dpl lbr">ᚱ 룬스톤 (24)</div><div class="sb"><span class="si">⌕</span><input type="text" placeholder="룬 검색..." value="'+dsq.r+'" oninput="dsq.r=this.value;repanel(\'r\')"/></div><div class="cg">'+opts+'</div></div>';}
+  if(d==='a'){const q=dsq.a.toLowerCase(),f=ANGEL.filter(c=>!q||c.toLowerCase().includes(q));const opts=f.map(c=>{const s=drawn.some(x=>x.d==='a'&&x.n===c);return'<span class="co'+(s?' sa':'')+'" onclick="pickCard(\'a\',\''+c.replace(/'/g,"\\'")+'\')" >'+c+'</span>';}).join('');return'<div class="dp" id="panel-a"><div class="dpl lba">✦ 앤젤엔써 (44장)</div><div class="sb"><span class="si">⌕</span><input type="text" placeholder="카드 검색..." value="'+dsq.a+'" oninput="dsq.a=this.value;repanel(\'a\')"/></div><div class="cg">'+opts+'</div><div class="cr"><input type="text" id="ci-a" placeholder="직접 입력..." onkeydown="if(event.key===\'Enter\')addCustom(\'a\',\'ci-a\')"/><button onclick="addCustom(\'a\',\'ci-a\')">추가</button></div></div>';}
+  return'';
+}
+function repanel(d){const el=document.getElementById('panel-'+d);if(el){const t=document.createElement('div');t.innerHTML=buildPanel(d);el.replaceWith(t.firstChild);}}
+function pickCard(d,name){
+  const idx=drawn.findIndex(x=>x.d===d&&x.n===name);
+  if(idx>=0)drawn.splice(idx,1);else{drawn.push({d,n:name});showHint(d,name);}
+  renderDrawn();repanel(d);
+}
+function showHint(d,name){
+  const meaning=getMeaning(d,name),box=document.getElementById('mhint-box');
+  if(!meaning){box.classList.remove('vis');return;}
+  document.getElementById('mhint-name').textContent='✦ '+name;
+  document.getElementById('mhint-text').textContent=meaning;
+  box.classList.remove('vis');void box.offsetWidth;box.classList.add('vis');
+}
+function closeHint(){document.getElementById('mhint-box').classList.remove('vis');}
+function addCustom(d,id){const inp=document.getElementById(id),val=inp.value.trim();if(!val)return;drawn.push({d,n:val});inp.value='';renderDrawn();}
+function removeCard(i){const c=drawn[i];drawn.splice(i,1);renderDrawn();repanel(c.d);}
+function renderDrawn(){
+  const el=document.getElementById('da');
+  if(!drawn.length){el.innerHTML='<span class="dh">덱을 선택하고 카드를 골라주세요</span>';return;}
+  el.innerHTML='<div class="dc">'+drawn.map((c,i)=>'<span class="cb '+DM[c.d].bad+'"><span>'+c.n+'</span><button onclick="removeCard('+i+')" aria-label="제거">×</button></span>').join('')+'</div>';
+}
+function toggleTag(el){el.classList.toggle('on');}
+function getTags(){return[...document.querySelectorAll('#tags .chip.on')].map(c=>c.dataset.tag);}
+
+async function save(){
+  const q=document.getElementById('q').value.trim();
+  if(!q){showToast('질문을 입력해주세요');return;}
+  if(!drawn.length){showToast('카드나 룬을 선택해주세요');return;}
+  const entry={id:Date.now(),date:document.getElementById('dt').value,decks:[...ads],moon,question:q,cards:JSON.parse(JSON.stringify(drawn)),interpretation:document.getElementById('interp').value.trim(),tags:getTags()};
+  entries.unshift(entry);
+  renderList();
+  await window._saveToFirebase(entry);
+  resetForm();showToast('✦ 기록이 저장되었어요');
+}
+function resetForm(){
+  document.getElementById('q').value='';document.getElementById('interp').value='';
+  drawn=[];moon='';ads=new Set();dsq={t:'',r:'',a:''};
+  document.querySelectorAll('.deck-btn').forEach(b=>Object.values(DM).forEach(m=>b.classList.remove(m.act)));
+  document.getElementById('panels').innerHTML='';renderDrawn();
+  document.querySelectorAll('.chip.on').forEach(c=>c.classList.remove('on'));
+  closeHint();const today=new Date().toISOString().split('T')[0];
+  document.getElementById('dt').value=today;updMoon(today);
+}
+function setF(el,v){flt=v;document.querySelectorAll('.fc').forEach(f=>f.classList.remove('on'));el.classList.add('on');renderList();}
+function renderList(){
+  const q=document.getElementById('srch').value.toLowerCase(),el=document.getElementById('elist');
+  let f=entries.filter(e=>{
+    if(flt!=='all'&&!(e.decks||[]).includes(flt))return false;
+    if(q){const h=[e.question,e.interpretation,...(e.cards||[]).map(c=>c.n||c),...(e.tags||[])].join(' ').toLowerCase();return h.includes(q);}
+    return true;
+  });
+  if(!f.length){el.innerHTML='<div class="empty"><span class="empty-ic">✦</span><p style="font-size:14px">'+(entries.length?'검색 결과가 없어요':'아직 기록이 없어요<br>첫 번째 리딩을 기록해보세요')+'</p></div>';return;}
+  el.innerHTML=f.map(e=>{
+    const ds=(e.date||'').replace(/-/g,'.');
+    const pills=(e.decks||[]).map(d=>'<span class="dpill '+(DM[d]?.pil||'')+'">'+(DM[d]?.label||d)+'</span>').join('');
+    const cards=(e.cards||[]).map(c=>'<span class="cb '+(DM[c.d||'t']?.bad||'bt')+'" style="font-size:11px"><span>'+(c.n||c)+'</span></span>').join('');
+    const tags=(e.tags||[]).map(t=>'<span class="etag">'+t+'</span>').join('');
+    return'<div class="ecard" onclick="openModal('+e.id+')"><div class="ehdr"><span class="edate">'+(e.moon||'')+' '+ds+'</span>'+pills+'</div><div class="eq">'+e.question+'</div><div class="ecards">'+cards+'</div>'+(e.interpretation?'<div class="esum">'+e.interpretation+'</div>':'')+(tags?'<div class="etags">'+tags+'</div>':'')+'</div>';
+  }).join('');
+}
+function openModal(id){
+  const e=entries.find(x=>x.id===id);if(!e)return;
+  const ds=(e.date||'').replace(/-/g,'.');
+  const pills=(e.decks||[]).map(d=>'<span class="dpill '+(DM[d]?.pil||'')+'">'+(DM[d]?.label||d)+'</span>').join('');
+  const cards=(e.cards||[]).map(c=>'<span class="cb '+(DM[c.d||'t']?.bad||'bt')+'"><span>'+(c.n||c)+'</span></span>').join('');
+  const tags=(e.tags||[]).map(t=>'<span class="etag">'+t+'</span>').join('');
+  document.getElementById('mc').innerHTML='<div class="mhandle"></div><div class="mhd"><div class="mtitle">'+(e.moon||'')+' '+ds+'</div><button class="mclose" onclick="closeModal()">✕</button></div><div class="mpills">'+pills+'</div><div class="ds"><div class="dl">질문 · 의도</div><div class="dv" style="font-weight:500;font-family:\'Noto Serif KR\',serif">'+e.question+'</div></div><div class="ds"><div class="dl">카드 · 룬</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px">'+cards+'</div></div>'+(e.interpretation?'<div class="ds"><div class="dl">해석 · 느낌</div><div class="dv">'+e.interpretation.replace(/\n/g,'<br>')+'</div></div>':'')+(tags?'<div class="ds"><div class="dl">태그</div><div class="etags" style="margin-top:4px">'+tags+'</div></div>':'')+'<button class="bdel" onclick="delEntry('+e.id+')">× 이 기록 삭제</button>';
+  document.getElementById('mov').classList.add('on');
+}
+function closeModal(){document.getElementById('mov').classList.remove('on');}
+function closeMBg(e){if(e.target.id==='mov')closeModal();}
+async function delEntry(id){
+  if(!confirm('이 기록을 삭제할까요?'))return;
+  const entry=entries.find(e=>e.id===id);
+  entries=entries.filter(e=>e.id!==id);
+  if(entry?._docId)await window._deleteFromFirebase(entry._docId);
+  closeModal();renderList();showToast('기록이 삭제되었어요');
+}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2500);}
+init();
+</script>
+</body>
+</html>
