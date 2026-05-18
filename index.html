@@ -132,6 +132,45 @@ textarea{resize:vertical;min-height:88px;line-height:1.7}
 .fc{font-size:12px;padding:5px 12px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#9080b0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;transition:all .15s;backdrop-filter:blur(8px)}
 .fc.on{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
 .elist{display:flex;flex-direction:column;gap:10px}
+.study-cats{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.scat{font-size:12px;padding:5px 12px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#9080b0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;transition:all .15s;backdrop-filter:blur(8px)}
+.scat.on{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
+.study-search{position:relative;margin-bottom:12px}
+.study-search input{padding-left:30px;font-size:13px;padding-top:8px;padding-bottom:8px}
+.study-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:14px;color:#b0a0c8;pointer-events:none}
+.sc-list{display:flex;flex-direction:column;gap:10px}
+.sc{background:rgba(255,255,255,0.5);backdrop-filter:blur(14px);border:0.5px solid rgba(255,255,255,0.7);border-radius:var(--r);overflow:hidden}
+.sc-hdr{padding:13px 15px 11px;cursor:pointer;border-bottom:0.5px solid rgba(255,255,255,0)}
+.sc-hdr.open{border-bottom:0.5px solid rgba(200,180,255,0.2)}
+.sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px}
+.sc-num{font-size:11px;color:#b0a0c8;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.sc-name{font-size:16px;font-weight:500;color:#3a2a5e;font-family:'Noto Serif KR',serif}
+.sc-sub{font-size:12px;color:#9080b0;margin-top:2px}
+.sc-badges{display:flex;flex-wrap:wrap;gap:4px}
+.sb2{font-size:11px;padding:2px 8px;border-radius:var(--rpill)}
+.sb-lav{background:rgba(197,207,232,0.5);color:var(--lav-deep)}
+.sb-mint{background:rgba(186,221,227,0.5);color:var(--mint-deep)}
+.sb-rose{background:rgba(236,210,209,0.5);color:var(--rose-deep)}
+.sb-sage{background:rgba(208,231,202,0.5);color:var(--sage-deep)}
+.sb-gray{background:rgba(220,220,215,0.5);color:#5a5a55}
+.sc-body{display:none;padding:0 15px 14px;flex-direction:column;gap:11px}
+.sc-body.open{display:flex}
+.slabel{font-size:11px;color:#b0a0c8;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.skws{display:flex;flex-wrap:wrap;gap:4px}
+.skw{font-size:12px;padding:3px 9px;border-radius:var(--rpill);background:rgba(255,255,255,0.5);color:#7060a0;border:0.5px solid rgba(200,180,255,0.25)}
+.sdir{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sdir-box{background:rgba(255,255,255,0.45);border-radius:var(--rsm);padding:9px 11px}
+.sdir-t{font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;margin-bottom:4px}
+.sdir-up .sdir-t{color:var(--lav-deep)}
+.sdir-dn .sdir-t{color:var(--rose-deep)}
+.sdir-d{font-size:12px;color:#6a5888;line-height:1.65}
+.ssym{background:rgba(255,255,255,0.45);border-radius:var(--rsm);padding:9px 11px}
+.ssym-list{display:flex;flex-direction:column;gap:7px;margin-top:5px}
+.ssym-item{font-size:12px;color:#6a5888;line-height:1.6}
+.ssym-t{font-weight:500;color:#7060a0}
+.sdiv{height:0.5px;background:rgba(200,180,255,0.2)}
+.suit-note{font-size:12px;color:#9080b0;background:rgba(255,255,255,0.4);border-radius:var(--rsm);padding:8px 12px;margin-bottom:10px;line-height:1.6}
+.rune-sym{font-size:28px;font-weight:400;color:#3a2a5e;letter-spacing:2px}
 .ecard{background:rgba(255,255,255,0.5);backdrop-filter:blur(14px);border:0.5px solid rgba(255,255,255,0.7);border-left:2.5px solid rgba(180,160,230,0.5);border-radius:var(--r);padding:13px 15px;cursor:pointer;transition:all .2s}
 .ecard:active{background:rgba(255,255,255,0.65)}
 .ehdr{display:flex;align-items:center;gap:7px;margin-bottom:7px;flex-wrap:wrap}
@@ -191,6 +230,7 @@ textarea{resize:vertical;min-height:88px;line-height:1.7}
   <div class="tabs">
     <button class="tab on" onclick="switchTab('w')">💜 새 기록</button>
     <button class="tab" onclick="switchTab('l')">💜 기록 보기</button>
+    <button class="tab" onclick="switchTab('s')">💜 공부하기</button>
   </div>
 
   <div id="sw" class="sec on">
@@ -255,7 +295,15 @@ textarea{resize:vertical;min-height:88px;line-height:1.7}
       <button class="fc" data-f="r" onclick="setF(this,'r')">💜 룬스톤</button>
       <button class="fc" data-f="a" onclick="setF(this,'a')">💜 앤젤엔써</button>
     </div>
+    <div id="card-filter-wrap" style="margin-bottom:10px;display:none">
+      <div style="font-size:11px;color:#b0a0c8;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">카드 · 룬 필터</div>
+      <div class="fchips" id="card-filter-chips" style="max-height:90px;overflow-y:auto"></div>
+    </div>
     <div class="elist" id="elist"></div>
+  </div>
+
+  <div id="ss" class="sec">
+    <div id="study-root"></div>
   </div>
 </div>
 
@@ -420,10 +468,12 @@ function init(){
 }
 
 function switchTab(t){
-  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('on',(i===0&&t==='w')||(i===1&&t==='l')));
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('on',(i===0&&t==='w')||(i===1&&t==='l')||(i===2&&t==='s')));
   document.getElementById('sw').classList.toggle('on',t==='w');
   document.getElementById('sl').classList.toggle('on',t==='l');
-  if(t==='l')renderList();
+  document.getElementById('ss').classList.toggle('on',t==='s');
+  if(t==='l'){buildCardFilterChips();renderList();}
+  if(t==='s')renderStudy();
 }
 function toggleDeck(btn){
   const d=btn.dataset.deck,m=DM[d];
@@ -481,11 +531,43 @@ function resetForm(){
   closeHint();const today=new Date().toISOString().split('T')[0];
   document.getElementById('dt').value=today;updMoon(today);
 }
-function setF(el,v){flt=v;document.querySelectorAll('.fc').forEach(f=>f.classList.remove('on'));el.classList.add('on');renderList();}
+let cardFlt=''; // selected card filter
+
+function setF(el,v){
+  flt=v; cardFlt='';
+  document.querySelectorAll('.fc').forEach(f=>f.classList.remove('on'));
+  el.classList.add('on');
+  buildCardFilterChips();
+  renderList();
+}
+
+function buildCardFilterChips(){
+  // collect all unique cards from entries matching current deck filter
+  const wrap=document.getElementById('card-filter-wrap');
+  const chipsEl=document.getElementById('card-filter-chips');
+  const filtered=flt==='all'?entries:entries.filter(e=>(e.decks||[]).includes(flt));
+  const cardMap=new Map(); // name -> deck
+  filtered.forEach(e=>(e.cards||[]).forEach(c=>{const n=c.n||c;if(!cardMap.has(n))cardMap.set(n,c.d||'t');}));
+  if(cardMap.size===0){wrap.style.display='none';cardFlt='';return;}
+  wrap.style.display='block';
+  chipsEl.innerHTML=[...cardMap.entries()].map(([name,d])=>{
+    const m=DM[d]||DM.t;
+    const on=cardFlt===name;
+    return'<button class="fc'+(on?' on':'')+'" style="'+(on?'background:rgba(197,207,232,0.6);':'')+'" onclick="setCardFlt(\''+name.replace(/'/g,"\\'")+'\')" >'+name+'</button>';
+  }).join('');
+}
+
+function setCardFlt(name){
+  cardFlt=cardFlt===name?'':name;
+  buildCardFilterChips();
+  renderList();
+}
+
 function renderList(){
   const q=document.getElementById('srch').value.toLowerCase(),el=document.getElementById('elist');
   let f=entries.filter(e=>{
     if(flt!=='all'&&!(e.decks||[]).includes(flt))return false;
+    if(cardFlt&&!(e.cards||[]).some(c=>(c.n||c)===cardFlt))return false;
     if(q){const h=[e.question,e.interpretation,...(e.cards||[]).map(c=>c.n||c),...(e.tags||[])].join(' ').toLowerCase();return h.includes(q);}
     return true;
   });
@@ -518,6 +600,194 @@ async function delEntry(id){
 }
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2500);}
 init();
+
+// ── STUDY TAB ──
+const SD={
+  major:[
+    {id:"ar00",num:"0",name:"바보 (The Fool)",sub:"새로운 시작 · 순수 · 모험",el:"공기",planet:"천왕성",zodiac:"물병자리",yn:"Yes",kw:["새로운 시작","순수","모험","자유","가능성","충동"],up:"두려움 없이 새로운 여정을 시작할 때. 계획보다 직관을 믿고 뛰어드는 에너지. 순수한 가능성의 문이 열려 있다.",dn:"무모함, 준비 없는 시작. 현실을 외면하거나 책임을 회피하는 상태. 발밑을 먼저 확인하라.",sym:[["절벽 끝","이미 한 발이 허공에 떠 있다. 두려움 없는 도약, 혹은 무지에서 오는 위험을 상징"],["흰 장미","순수함과 새로운 시작. 아직 때묻지 않은 영혼"],["작은 보따리","최소한의 짐만 챙긴다. 과거의 무게를 내려놓은 가벼움"]]},
+    {id:"ar01",num:"I",name:"마법사 (The Magician)",sub:"의지력 · 실현 · 기술",el:"공기",planet:"수성",zodiac:"쌍둥이자리",yn:"Yes",kw:["의지력","창조","실현","집중","기술","자원활용"],up:"가진 것으로 원하는 것을 만들어낼 수 있는 시기. 지금이 행동할 때.",dn:"재능을 낭비하거나 조작적으로 사용하는 상태. 의지력 부족.",sym:[["무한 표식","머리 위의 뫼비우스 띠. 무한한 잠재력과 에너지의 순환"],["테이블 위 4원소","완드·컵·소드·펜타클. 네 원소를 모두 다룰 수 있는 마스터"],["양손의 방향","위에서처럼 아래에서도(As above, so below) — 신성과 현실을 연결하는 채널"]]},
+    {id:"ar02",num:"II",name:"여사제 (The High Priestess)",sub:"직관 · 신비 · 내면의 지식",el:"물",planet:"달",zodiac:"게자리",yn:"Yes",kw:["직관","내면의 지혜","비밀","신비","잠재의식","침묵"],up:"말하기보다 듣는 시간. 논리보다 직관이 더 많은 것을 알고 있다.",dn:"직관을 억누르거나 무시하는 상태. 표면 아래의 불안.",sym:[["보아스와 야킨 기둥","솔로몬 신전의 두 기둥. 빛과 어둠, 의식과 무의식의 경계"],["석류 커튼","베일 너머의 신비로운 세계. 아직 드러나지 않은 것들"],["두루마리 TORA","숨겨진 지식과 신성한 법칙"]]},
+    {id:"ar03",num:"III",name:"여황제 (The Empress)",sub:"풍요 · 창조 · 모성",el:"흙",planet:"금성",zodiac:"황소자리",yn:"Yes",kw:["풍요","창조","모성","자연","감각적 기쁨","성장"],up:"창조와 생산의 에너지가 넘치는 시기. 몸과 감각을 통해 세상을 경험하라.",dn:"창의적 막힘, 과보호 또는 방치.",sym:[["12개의 별 왕관","황도 12궁과 계절의 순환. 자연의 모든 사이클을 다스리는 힘"],["풍성한 밀밭","수확의 계절. 뿌린 씨앗이 열매를 맺는 풍요의 상징"],["금성 방패","사랑·아름다움·풍요를 수호하는 여신의 에너지"]]},
+    {id:"ar04",num:"IV",name:"황제 (The Emperor)",sub:"권위 · 구조 · 안정",el:"불",planet:"화성",zodiac:"양자리",yn:"Yes",kw:["권위","구조","규율","안정","리더십","보호"],up:"체계와 규율로 현실을 단단히 구축하라. 리더십을 발휘하라.",dn:"권위주의, 경직성, 지나친 통제.",sym:[["양머리 왕좌","양자리의 상징. 개척자적 에너지와 강인한 의지"],["홀과 구체","통치권과 세계 지배. 현실 세계를 다스리는 실질적 권력"],["황량한 산","감정이 없는 이성의 세계"]]},
+    {id:"ar05",num:"V",name:"교황 (The Hierophant)",sub:"전통 · 가르침 · 영적 안내",el:"흙",planet:"금성",zodiac:"황소자리",yn:"Yes",kw:["전통","가르침","공동체","관습","멘토","신념"],up:"검증된 방식과 전통 안에서 지혜를 찾을 때. 스승이나 멘토의 인도를 받아라.",dn:"교조주의, 기존 틀을 깨야 할 때.",sym:[["삼중 십자가 홀","세 가지 세계를 다스리는 영적 권위"],["무릎 꿇은 두 제자","지식은 스승에서 제자로 전수된다"],["열쇠 두 개","영적 지식을 잠그고 여는 힘"]]},
+    {id:"ar06",num:"VI",name:"연인 (The Lovers)",sub:"선택 · 연결 · 가치관의 일치",el:"공기",planet:"수성",zodiac:"쌍둥이자리",yn:"Yes",kw:["선택","사랑","조화","가치관","관계","진정성"],up:"가슴이 이끄는 선택을 할 때. 진정으로 원하는 것을 선택하라.",dn:"가치관의 불일치, 잘못된 선택, 외부 압력에 의한 결정.",sym:[["에덴의 아담과 이브","선택 이전의 순수한 상태"],["라파엘 천사","치유와 소통의 천사. 두 존재 사이를 중재하고 축복하는 힘"],["생명의 나무와 지식의 나무","본능과 정신 사이의 영원한 선택"]]},
+    {id:"ar07",num:"VII",name:"전차 (The Chariot)",sub:"의지력 · 승리 · 방향",el:"물",planet:"달",zodiac:"게자리",yn:"Yes",kw:["승리","의지력","집중","방향","통제","전진"],up:"내면의 갈등을 다스리며 하나의 목표로 전진하라. 멈추지 마라.",dn:"방향을 잃거나 통제력 상실. 내부 갈등으로 인한 정체.",sym:[["검은색·흰색 스핑크스","상반된 힘을 동시에 다스린다. 조화가 아닌 통제"],["별이 빛나는 천막","신성한 보호 아래의 여정"],["고삐 없는 마차","의지의 힘으로 스핑크스를 통제한다"]]},
+    {id:"ar08",num:"VIII",name:"힘 (Strength)",sub:"내면의 힘 · 용기 · 인내",el:"불",planet:"태양",zodiac:"사자자리",yn:"Yes",kw:["내면의 힘","용기","인내","연민","부드러운 통제","자기확신"],up:"강압이 아닌 사랑과 연민으로 어려운 상황을 다스려라. 부드러움이 가장 강한 힘이다.",dn:"자기 의심, 내면의 힘에 대한 불신.",sym:[["여인과 사자","인간의 정신이 동물적 본능을 부드럽게 다스린다. 억압이 아닌 공존"],["무한 표식","무한한 영적 힘. 내면의 힘이 끝없음을 상징"],["꽃 화관","자연과의 조화. 아름다움과 부드러움이 실제 힘의 원천"]]},
+    {id:"ar09",num:"IX",name:"은둔자 (The Hermit)",sub:"내면 탐구 · 고독 · 지혜",el:"흙",planet:"수성",zodiac:"처녀자리",yn:"Maybe",kw:["내면 탐구","고독","지혜","안내","성찰","진실 추구"],up:"혼자만의 시간 속에서 진정한 답을 찾을 때. 내면의 등불을 따라가라.",dn:"고립, 외로움, 사회적 단절.",sym:[["등불 속 별","다윗의 별. 지혜의 빛으로 길을 밝히는 등불"],["설산 꼭대기","세속을 떠난 높은 경지. 고립이 아닌 조망의 지점"],["지팡이","여정의 동반자이자 지혜의 상징"]]},
+    {id:"ar10",num:"X",name:"운명의 수레바퀴 (Wheel of Fortune)",sub:"변화 · 순환 · 운명",el:"불",planet:"목성",zodiac:"사수자리",yn:"Yes",kw:["변화","순환","운명","기회","전환점","행운"],up:"삶의 흐름이 바뀌는 전환점. 통제할 수 없는 힘을 받아들이고 흐름을 타라.",dn:"불운, 저항, 반복되는 패턴에서 벗어나지 못하는 상태.",sym:[["TARO·ROTA·TORA","수레바퀴에 새겨진 글자. 타로의 지혜, 인과의 법칙을 동시에 의미"],["네 귀퉁이의 생물","황소·사자·독수리·천사. 변화 속에서도 변하지 않는 것들"],["뱀과 아누비스와 스핑크스","상승과 하강의 영원한 순환"]]},
+    {id:"ar11",num:"XI",name:"정의 (Justice)",sub:"균형 · 진실 · 공정",el:"공기",planet:"금성",zodiac:"천칭자리",yn:"Maybe",kw:["균형","진실","공정","책임","인과응보","객관성"],up:"행동에는 결과가 따른다. 공정하고 객관적인 판단을 내려야 할 때.",dn:"불공정, 불균형, 자신의 책임을 인정하지 않는 상태.",sym:[["저울","균형과 공정함. 모든 것을 정확히 달아보는 객관적 판단"],["양날 검","진실은 양쪽을 모두 벤다"],["빨간 옷과 보라 망토","물질적 행동과 영적 판단의 통합"]]},
+    {id:"ar12",num:"XII",name:"매달린 사람 (The Hanged Man)",sub:"기다림 · 자발적 희생 · 새로운 시각",el:"물",planet:"넵튠",zodiac:"물고기자리",yn:"Maybe",kw:["기다림","희생","다른 시각","깨달음","정지","내려놓기"],up:"자발적으로 멈추고 다른 각도에서 바라볼 때 새로운 진실이 보인다.",dn:"쓸모없는 희생, 지연, 정체 상태에서 벗어나야 할 때.",sym:[["뒤집힌 자세","세상을 거꾸로 보는 것이 더 명확한 진실을 보여준다"],["빛나는 후광","고통이나 정지 상태에서 오는 영적 깨달음"],["T자 나무","오딘이 지식을 얻기 위해 매달린 신화와 연결"]]},
+    {id:"ar13",num:"XIII",name:"죽음 (Death)",sub:"변환 · 끝과 시작 · 놓아주기",el:"물",planet:"명왕성",zodiac:"전갈자리",yn:"Maybe",kw:["변환","끝","새로운 시작","놓아주기","필연적 변화","재탄생"],up:"묵은 것이 끝나야 새것이 시작된다. 두려워하지 마라. 이 끝은 더 나은 시작의 씨앗이다.",dn:"변화에 저항하거나 끝을 인정하지 않는 상태.",sym:[["백마 탄 해골 기사","계급과 신분을 가리지 않는 변화의 보편성"],["떠오르는 태양","끝은 언제나 새로운 시작의 약속을 품고 있다"],["흰 장미 깃발","순수함과 재탄생. 죽음은 끝이 아닌 변환의 과정"]]},
+    {id:"ar14",num:"XIV",name:"절제 (Temperance)",sub:"균형 · 조화 · 인내",el:"불",planet:"목성",zodiac:"사수자리",yn:"Yes",kw:["균형","조화","인내","통합","중용","치유"],up:"천천히, 꾸준히, 극단 없이. 두 가지를 하나로 통합할 때 진짜 연금술이 일어난다.",dn:"불균형, 과잉, 극단적 행동.",sym:[["물을 붓는 천사","두 컵 사이에서 물을 흘려보낸다. 의식과 무의식의 통합"],["한 발은 물에 한 발은 땅에","두 세계 사이의 균형"],["이마의 삼각형","물질 세계 안에 깃든 영적 불꽃"]]},
+    {id:"ar15",num:"XV",name:"악마 (The Devil)",sub:"속박 · 물질주의 · 집착",el:"흙",planet:"토성",zodiac:"염소자리",yn:"No",kw:["속박","집착","물질주의","의존","그림자","욕망"],up:"스스로 만든 사슬을 인식하라. 중독, 집착, 부정적 패턴에 갇혀 있다. 그러나 사슬은 풀 수 있다.",dn:"해방, 속박으로부터 탈출. 그림자를 마주하고 자유를 찾는 용기.",sym:[["느슨한 사슬","스스로 원한다면 언제든 벗어날 수 있다"],["역오각형 바포메트","물질 세계에 뒤집힌 영성. 본능에 지배당하는 상태"],["아래를 향한 횃불","파괴적 방향으로 흐르는 에너지"]]},
+    {id:"ar16",num:"XVI",name:"탑 (The Tower)",sub:"갑작스러운 변화 · 계시 · 붕괴",el:"불",planet:"화성",zodiac:"—",yn:"No",kw:["붕괴","계시","갑작스러운 변화","진실의 폭로","혼돈","재건"],up:"거짓 위에 세워진 것은 반드시 무너진다. 고통스럽지만 이 붕괴가 진짜 기반을 드러낸다.",dn:"붕괴를 피하려는 저항, 재난의 지연.",sym:[["번개에 맞는 탑","인간이 만든 허위 구조에 신성한 진실이 충격을 가한다"],["떨어지는 두 사람","기존의 안전지대에서 강제로 추락. 새로운 기반을 찾게 된다"],["왕관의 추락","세속적 권력과 자아의 붕괴"]]},
+    {id:"ar17",num:"XVII",name:"별 (The Star)",sub:"희망 · 치유 · 영감",el:"공기",planet:"천왕성",zodiac:"물병자리",yn:"Yes",kw:["희망","치유","영감","신뢰","재생","평화"],up:"어둠이 지난 뒤 찾아오는 빛. 상처가 아물고 새로운 희망이 싹트는 시기.",dn:"희망을 잃거나 스스로를 의심하는 상태.",sym:[["별 8개","중앙의 큰 별은 금성, 작은 7개는 차크라 또는 플레이아데스 성단"],["두 개의 물병","의식과 무의식 모두에 에너지를 흘려보냄"],["나뭇가지 위의 새","영혼과 신성한 메신저"]]},
+    {id:"ar18",num:"XVIII",name:"달 (The Moon)",sub:"무의식 · 환상 · 불안",el:"물",planet:"달",zodiac:"물고기자리",yn:"Maybe",kw:["무의식","환상","불안","직관","꿈","혼란"],up:"두려움과 환상이 뒤섞인 시간. 보이는 것이 전부가 아니다. 직관을 믿되 환상에 속지 마라.",dn:"혼란과 두려움의 해소, 자기기만의 폭로.",sym:[["달의 세 모습","초승·반달·보름. 무의식의 세 단계"],["개와 늑대","문명과 야성. 인간 내면의 두 본성"],["가재","무의식의 깊은 곳에서 표면으로 올라오는 원초적 공포"]]},
+    {id:"ar19",num:"XIX",name:"태양 (The Sun)",sub:"기쁨 · 성공 · 활력",el:"불",planet:"태양",zodiac:"사자자리",yn:"Yes",kw:["기쁨","성공","활력","명료함","긍정","황금기"],up:"밝고 따뜻한 에너지가 가득한 시간. 숨길 것이 없는 투명함. 성공과 인정이 찾아온다.",dn:"일시적 좌절, 과도한 낙관.",sym:[["아이와 흰 말","순수한 기쁨과 자유"],["네 개의 해바라기","4원소의 완전한 개화. 생명의 기쁨"],["붉은 깃발","승리와 열정"]]},
+    {id:"ar20",num:"XX",name:"심판 (Judgement)",sub:"각성 · 부활 · 소명",el:"불",planet:"명왕성",zodiac:"전갈자리",yn:"Yes",kw:["각성","부활","소명","자기용서","평가","해방"],up:"과거를 용서하고 진정한 자아의 부름에 응답할 때. 새로운 단계로 도약할 준비가 되었다.",dn:"자기 비판, 죄책감, 기회를 놓치는 두려움.",sym:[["가브리엘의 나팔","신성한 소환. 영혼의 깨어남을 알리는 우주적 호출"],["관에서 일어나는 사람들","과거의 속박에서 벗어나 새로운 차원으로 부활하는 영혼들"],["십자가 깃발","영적 힘과 물질적 세계의 통합"]]},
+    {id:"ar21",num:"XXI",name:"세계 (The World)",sub:"완성 · 통합 · 성취",el:"흙",planet:"토성",zodiac:"염소자리",yn:"Yes",kw:["완성","통합","성취","전체성","자유","새로운 사이클"],up:"하나의 사이클이 원만하게 마무리된다. 완전한 통합과 달성.",dn:"미완성, 목표 직전의 포기.",sym:[["월계관 화환","승리와 완성. 원형은 완전한 사이클의 끝과 시작이 하나임을 상징"],["춤추는 인물","완전한 자유와 통합"],["네 귀퉁이의 생물","모든 차원을 완전히 통합한 상태"]]}
+  ],
+  minor:{
+    wands:{el:"불",note:"열정·창의·직관·행동의 원소. 완드는 우리가 열정을 쏟는 곳, 아이디어와 야망의 영역이에요.",cards:[
+      {rank:"에이스",kw:["영감","새 프로젝트","잠재력","창의적 불꽃"],up:"영감의 불꽃이 타오른다. 새로운 창의적 프로젝트의 시작. 지금 행동하라.",dn:"창의력 막힘, 지연, 동기 부족."},
+      {rank:"2",kw:["계획","미래 비전","더 넓은 세계","결정"],up:"넓은 세계로 나아갈 준비. 계획이 구체화되고 있다.",dn:"두려움으로 인한 계획 포기, 안전지대 집착."},
+      {rank:"3",kw:["확장","진행 중인 성장","기다림","지평선"],up:"씨앗이 자라고 있다. 인내하며 기다려라. 원정 중인 배들이 돌아오고 있다.",dn:"지연, 좌절, 기다림에 지친 상태."},
+      {rank:"4",kw:["축하","안정","공동체","휴식"],up:"노력 끝에 찾아온 안정과 축하. 주변 사람들과 성취를 나눠라.",dn:"불안정한 기반, 조화의 결여."},
+      {rank:"5",kw:["갈등","경쟁","소통의 어려움","혼란"],up:"다양한 의견의 충돌. 경쟁적 환경에서 자신의 입장을 유지하라.",dn:"갈등 회피, 내부 갈등."},
+      {rank:"6",kw:["승리","인정","리더십","공개적 성공"],up:"노력이 인정받는 시간. 승리와 함께 리더로 나서게 된다.",dn:"인정받지 못함, 성공에 대한 불안."},
+      {rank:"7",kw:["방어","입장 고수","도전","용기"],up:"높은 자리에서 도전을 받고 있다. 자신의 입장을 굳건히 지켜라.",dn:"압도됨, 포기."},
+      {rank:"8",kw:["빠른 움직임","행동","소통","가속"],up:"모든 것이 빠르게 움직인다. 지금이 행동할 때.",dn:"지연, 빠른 변화에 적응 못하는 상태."},
+      {rank:"9",kw:["회복력","인내","끝까지","방어"],up:"많이 지쳤지만 거의 다 왔다. 조금만 더 버텨라.",dn:"번아웃, 포기 직전."},
+      {rank:"10",kw:["과부하","책임의 무게","완성 직전","내려놓기"],up:"너무 많은 것을 혼자 짊어지고 있다. 위임하거나 내려놓을 것을 찾아라.",dn:"짐을 내려놓기, 번아웃 이후의 회복."},
+      {rank:"페이지",kw:["탐구","새로운 아이디어","열정적 학습","메신저"],up:"새로운 분야에 대한 호기심과 열정. 배우는 것 자체가 기쁨인 시기.",dn:"성급함, 아이디어만 있고 실행이 없는 상태."},
+      {rank:"나이트",kw:["충동","모험","열정","빠른 행동"],up:"열정적으로 돌진하는 에너지. 계획보다 행동이 먼저.",dn:"충동적 실수, 방향 없는 질주."},
+      {rank:"퀸",kw:["자신감","창의성","따뜻함","독립심"],up:"카리스마 넘치는 창의적 에너지. 따뜻하고 자신감 있는 리더십.",dn:"까다로움, 에너지 소진."},
+      {rank:"킹",kw:["비전","리더십","기업가","카리스마"],up:"열정과 비전으로 이끄는 강력한 리더. 큰 그림을 본다.",dn:"독재적, 충동적 결정."}
+    ]},
+    cups:{el:"물",note:"감정·직관·관계·무의식의 원소. 컵은 우리의 감정 세계, 사랑과 꿈의 영역이에요.",cards:[
+      {rank:"에이스",kw:["새로운 감정","사랑의 시작","직관","감정적 선물"],up:"새로운 감정이나 관계의 시작. 직관의 선물이 찾아온다. 마음을 열어라.",dn:"감정 억압, 마음의 문이 닫힌 상태."},
+      {rank:"2",kw:["파트너십","상호 이끌림","연결","조화"],up:"두 영혼의 아름다운 연결. 상호 존중과 이끌림.",dn:"불균형한 관계, 이별, 단절."},
+      {rank:"3",kw:["우정","축하","공동체","창의적 협력"],up:"소중한 사람들과 함께 기뻐할 시간. 재회, 파티, 협업이 잘 맞는다.",dn:"과도한 파티, 삼각관계."},
+      {rank:"4",kw:["권태","성찰","내면 탐구","놓친 기회"],up:"현재 가진 것에 만족하지 못하는 상태. 그러나 새로운 기회가 손을 내밀고 있다.",dn:"새로운 가능성의 발견."},
+      {rank:"5",kw:["슬픔","상실","후회","남은 것"],up:"잃은 것에 집중하고 있다. 뒤에는 아직 두 개의 컵이 서 있다. 남은 것에 눈을 돌려라.",dn:"슬픔의 치유, 용서, 앞으로 나아가기."},
+      {rank:"6",kw:["향수","추억","순수","과거"],up:"좋았던 시절의 기억. 어린 시절의 순수함과 연결.",dn:"과거에 집착, 현재를 살지 못하는 상태."},
+      {rank:"7",kw:["환상","선택","혼란","꿈"],up:"많은 가능성이 눈앞에 있지만 현실과 환상을 구분해야 할 때.",dn:"현실 직시, 환상에서 깨어남."},
+      {rank:"8",kw:["떠남","더 깊은 탐구","포기","순례"],up:"이미 쌓아놓은 것을 두고 더 의미 있는 것을 찾아 떠날 때.",dn:"포기하지 말 것."},
+      {rank:"9",kw:["만족","소원 성취","풍요","감사"],up:"소원이 이루어진다. 물질적·감정적 만족. 소원 카드라고도 불린다.",dn:"탐욕, 불만족."},
+      {rank:"10",kw:["완전한 행복","가족","조화","완성"],up:"감정적 완성과 가족의 행복. 충만한 상태.",dn:"가족 갈등, 이상과 현실의 괴리."},
+      {rank:"페이지",kw:["감수성","창의적 메시지","직관","꿈"],up:"감수성이 예민하고 직관이 깨어 있는 시기.",dn:"감정 기복, 공상에 빠짐."},
+      {rank:"나이트",kw:["낭만","감정적 여정","이상주의","구애"],up:"낭만적이고 이상적인 에너지. 감정이 이끄는 여정.",dn:"감정 조작, 현실 감각 결여."},
+      {rank:"퀸",kw:["공감","직관","돌봄","감정적 성숙"],up:"깊은 공감 능력과 직관적 지혜. 감정적으로 성숙한 에너지.",dn:"감정적 의존."},
+      {rank:"킹",kw:["감정적 균형","지혜","성숙한 사랑","중재"],up:"감정을 지혜롭게 다루는 성숙한 에너지.",dn:"감정적 조작, 억압된 감정의 폭발."}
+    ]},
+    swords:{el:"공기",note:"지성·소통·갈등·진실의 원소. 소드는 우리의 생각과 말, 진실과 갈등의 영역이에요.",cards:[
+      {rank:"에이스",kw:["명료함","진실","돌파구","새로운 생각"],up:"진실의 칼이 모든 혼란을 자른다. 명료한 생각과 결단.",dn:"혼란, 잘못된 정보."},
+      {rank:"2",kw:["교착","결정 장애","내면 갈등","균형"],up:"두 선택 사이에서 균형을 잡고 있다. 외면하고 있는 것에 눈을 떠야 할 때.",dn:"교착 상태 해소, 결정."},
+      {rank:"3",kw:["상처","슬픔","진실의 아픔","이별"],up:"진실이 가져오는 고통. 그러나 알아야 치유할 수 있다.",dn:"상처 회복, 용서."},
+      {rank:"4",kw:["휴식","회복","명상","재충전"],up:"싸움을 잠시 멈추고 회복하라. 전략적 후퇴가 필요한 시간.",dn:"강제로 일어나야 할 때."},
+      {rank:"5",kw:["갈등 후 손실","공허한 승리","배반","자기이익"],up:"이겼지만 가치 없는 승리. 불공정한 방식으로 얻은 것은 오래가지 않는다.",dn:"화해, 갈등 해소."},
+      {rank:"6",kw:["전환","이동","더 나은 곳으로","치유의 여정"],up:"힘들었던 곳을 떠나 더 평온한 곳으로. 전환과 치유의 여정.",dn:"여정의 지연, 과거를 놓지 못함."},
+      {rank:"7",kw:["전략","독립적 행동","숨겨진 계획","영리함"],up:"혼자 조용히 움직이는 전략. 모든 것을 드러내지 않아도 될 때.",dn:"들통, 기만의 폭로."},
+      {rank:"8",kw:["속박","자기 제한","두려움","갇힘"],up:"스스로 만든 감옥. 사실은 사슬이 느슨하다. 두려움이 진짜 장벽이다.",dn:"자유, 두려움 극복."},
+      {rank:"9",kw:["불안","밤의 공포","걱정","자기 고문"],up:"새벽의 공포. 머릿속 최악의 시나리오들. 실제보다 훨씬 과장되어 있다.",dn:"걱정의 해소, 도움 요청."},
+      {rank:"10",kw:["끝","배반","고통의 최정점","완전한 마무리"],up:"가장 힘든 순간. 그러나 더 나빠질 수 없다는 것이 역설적 위안.",dn:"회복, 최악에서 반등."},
+      {rank:"페이지",kw:["호기심","비판적 사고","새로운 정보","경각심"],up:"예리한 관찰력과 호기심. 새로운 정보나 아이디어가 도착한다.",dn:"잔소리, 정보 오용."},
+      {rank:"나이트",kw:["빠른 행동","논쟁","직진","지성"],up:"거침없이 전진하는 지적 에너지. 빠르고 결단력 있다.",dn:"충동적 결정, 공격성."},
+      {rank:"퀸",kw:["명료한 판단","독립","지성","날카로운 통찰"],up:"경험에서 나오는 명료한 판단력. 독립적이고 예리하다.",dn:"냉담함, 고립."},
+      {rank:"킹",kw:["지성적 권위","공정","소통","분석"],up:"명료하고 공정한 지성. 말과 글로 이끄는 권위.",dn:"독단, 조작적 소통."}
+    ]},
+    pentacles:{el:"흙",note:"물질·돈·몸·현실의 원소. 펜타클은 우리의 현실적 삶, 돈과 건강과 일의 영역이에요.",cards:[
+      {rank:"에이스",kw:["물질적 시작","새로운 기회","씨앗","재정적 선물"],up:"새로운 물질적 기회의 씨앗. 돈, 건강, 커리어의 새로운 시작.",dn:"놓친 기회, 물질적 손실."},
+      {rank:"2",kw:["균형","멀티태스킹","적응","유연성"],up:"여러 일을 동시에 저글링하는 시기. 유연하게 균형을 잡아라.",dn:"과부하, 균형 붕괴."},
+      {rank:"3",kw:["협력","기술의 인정","팀워크","학습"],up:"기술이 인정받는 시기. 팀과의 협력이 빛을 발한다.",dn:"불화, 독불장군."},
+      {rank:"4",kw:["집착","물질적 안정","절약","통제"],up:"소유에 집착하거나 지나치게 절약하는 상태. 안정이 두려움으로 변하고 있다.",dn:"집착에서 벗어남, 나눔."},
+      {rank:"5",kw:["결핍","걱정","고난","도움 요청"],up:"물질적·정서적 결핍. 그러나 도움의 빛이 보인다. 도움을 요청하라.",dn:"회복, 도움의 도착."},
+      {rank:"6",kw:["나눔","관대함","균형 있는 교환","자선"],up:"주는 것과 받는 것의 균형. 관대한 에너지.",dn:"일방적 나눔, 불공정한 거래."},
+      {rank:"7",kw:["인내","장기 투자","기다림","성찰"],up:"지금 당장의 결과보다 장기적 성장을 기다려라.",dn:"성급함, 투자에 대한 의심."},
+      {rank:"8",kw:["숙련","장인정신","노력","집중"],up:"기술을 갈고닦는 시간. 꾸준한 노력이 전문성을 만든다.",dn:"완벽주의, 노력의 낭비."},
+      {rank:"9",kw:["풍요","자립","성취","안락함"],up:"스스로 이룬 풍요와 안락함. 독립적이고 자족하는 상태.",dn:"물질 의존, 외로움."},
+      {rank:"10",kw:["유산","가족","완성","장기적 안정"],up:"가족과 함께하는 물질적 완성. 세대를 넘는 유산과 안정.",dn:"가족 갈등, 재정 문제."},
+      {rank:"페이지",kw:["학습","실용적 기술","새로운 시작","연구"],up:"새로운 실용적 기술의 학습. 꼼꼼하고 신중하게 시작하라.",dn:"게으름, 학습의 지연."},
+      {rank:"나이트",kw:["신뢰","꾸준함","현실적","방법론"],up:"느리지만 확실하게. 신뢰할 수 있는 꾸준한 에너지.",dn:"지루함, 정체."},
+      {rank:"퀸",kw:["실용적 돌봄","번영 관리","관대함","현실적 지혜"],up:"풍요를 현명하게 관리하는 에너지. 따뜻하고 실용적인 돌봄.",dn:"과보호, 재정 불안."},
+      {rank:"킹",kw:["물질적 성공","신뢰","안정","리더십"],up:"현실 세계에서의 성공. 안정적이고 신뢰할 수 있는 리더.",dn:"완고함, 물질주의."}
+    ]}
+  },
+  runes:[
+    {sym:"ᚠ",name:"Fehu",kor:"페후",kw:["풍요","번영","소유","순환"],meaning:"풍요와 번영의 룬. 소유한 것을 잘 관리하고 순환시켜라. 재물과 에너지의 흐름."},
+    {sym:"ᚢ",name:"Uruz",kor:"우루즈",kw:["원초적 힘","생명력","변화","야성"],meaning:"원초적 힘과 생명력의 룬. 변화를 통한 성장. 야생의 에너지가 깨어난다."},
+    {sym:"ᚦ",name:"Thurisaz",kor:"투리사즈",kw:["보호","장벽","반응","기다림"],meaning:"보호와 장벽의 룬. 서두르지 말고 준비가 될 때까지 기다려라."},
+    {sym:"ᚨ",name:"Ansuz",kor:"안수즈",kw:["신성한 메시지","소통","지혜","신호"],meaning:"신성한 메시지와 소통의 룬. 귀를 기울여라 — 중요한 신호가 온다."},
+    {sym:"ᚱ",name:"Raidho",kor:"라이도",kw:["여정","리듬","방향","흐름"],meaning:"여정과 리듬의 룬. 삶의 흐름 속에서 자신의 길을 유지하라."},
+    {sym:"ᚲ",name:"Kenaz",kor:"케나즈",kw:["창의적 불꽃","지식","변환","배움"],meaning:"창의적 불꽃과 지식의 룬. 내면의 불을 켜고 배움과 창조에 집중하라."},
+    {sym:"ᚷ",name:"Gebo",kor:"게보",kw:["선물","파트너십","균형","교환"],meaning:"선물과 파트너십의 룬. 받는 것과 주는 것의 아름다운 균형."},
+    {sym:"ᚹ",name:"Wunjo",kor:"운조",kw:["기쁨","조화","소원 성취","행복"],meaning:"기쁨과 조화의 룬. 노력이 결실을 맺고 행복이 찾아온다."},
+    {sym:"ᚺ",name:"Hagalaz",kor:"하갈라즈",kw:["혼란","시련","변화","폭풍"],meaning:"혼란과 시련의 룬. 폭풍을 통과해야 새로운 시작이 온다."},
+    {sym:"ᚾ",name:"Nauthiz",kor:"나우티즈",kw:["필요","제약","내면의 강함","인내"],meaning:"필요와 제약의 룬. 어려움 속에서 진짜 힘이 드러난다."},
+    {sym:"ᛁ",name:"Isa",kor:"이사",kw:["정지","내면 응시","기다림","고요"],meaning:"정지와 내면 응시의 룬. 모든 것이 얼어붙은 듯 느껴질 때 — 고요히 기다려라."},
+    {sym:"ᛃ",name:"Jera",kor:"예라",kw:["수확","사이클","결실","때"],meaning:"수확과 사이클의 룬. 뿌린 씨앗이 제때 열매 맺는다."},
+    {sym:"ᛇ",name:"Eihwaz",kor:"에이와즈",kw:["변환","연결","인내","깊이"],meaning:"변환과 연결의 룬. 지속적 변화와 깊은 연결."},
+    {sym:"ᛈ",name:"Perthro",kor:"페르스로",kw:["신비","운명","숨겨진 것","우연"],meaning:"신비와 운명의 룬. 아직 드러나지 않은 것들이 있다."},
+    {sym:"ᛉ",name:"Algiz",kor:"알기즈",kw:["보호","수호","신성한 연결","방어"],meaning:"보호와 수호의 룬. 높은 차원의 힘이 당신을 지키고 있다."},
+    {sym:"ᛊ",name:"Sowilo",kor:"소윌로",kw:["태양","성공","생명력","승리"],meaning:"태양과 성공의 룬. 밝은 에너지가 길을 비추고 목표를 향해 나아간다."},
+    {sym:"ᛏ",name:"Tiwaz",kor:"티와즈",kw:["정의","희생","리더십","용기"],meaning:"정의와 희생의 룬. 옳은 일을 위해 용감하게 나서라."},
+    {sym:"ᛒ",name:"Berkano",kor:"베르카노",kw:["탄생","성장","치유","돌봄"],meaning:"탄생과 성장의 룬. 새로운 시작과 부드러운 보살핌의 에너지."},
+    {sym:"ᛖ",name:"Ehwaz",kor:"에와즈",kw:["움직임","파트너십","신뢰","전진"],meaning:"움직임과 파트너십의 룬. 조화로운 협력과 꾸준한 전진."},
+    {sym:"ᛗ",name:"Mannaz",kor:"마나즈",kw:["인간성","자아","공동체","연결"],meaning:"인간성과 자아의 룬. 자신을 알고 타인과 연결하라."},
+    {sym:"ᛚ",name:"Laguz",kor:"라구즈",kw:["물","직관","무의식","감정"],meaning:"물과 직관의 룬. 감정의 흐름을 따라가라 — 직관을 믿어라."},
+    {sym:"ᛜ",name:"Ingwaz",kor:"잉와즈",kw:["내면의 성장","잠재력","씨앗","준비"],meaning:"내면의 성장과 잠재력의 룬. 씨앗이 내부에서 준비되고 있다."},
+    {sym:"ᛞ",name:"Dagaz",kor:"다가즈",kw:["새벽","돌파구","깨달음","변화"],meaning:"새벽과 돌파구의 룬. 어둠이 끝나고 빛이 밝아온다."},
+    {sym:"ᛟ",name:"Othala",kor:"오탈라",kw:["유산","뿌리","고향","조상"],meaning:"유산과 뿌리의 룬. 조상과 연결되고 근원으로 돌아가라."}
+  ]
+};
+
+let studyCat="major",studyQ="";
+
+function renderStudy(){
+  const root=document.getElementById("study-root");
+  if(!root)return;
+  root.innerHTML=`
+    <div class="study-cats">
+      <button class="scat${studyCat==="major"?" on":""}" onclick="setStudyCat('major')">메이저 아르카나</button>
+      <button class="scat${studyCat==="wands"?" on":""}" onclick="setStudyCat('wands')">완드</button>
+      <button class="scat${studyCat==="cups"?" on":""}" onclick="setStudyCat('cups')">컵</button>
+      <button class="scat${studyCat==="swords"?" on":""}" onclick="setStudyCat('swords')">소드</button>
+      <button class="scat${studyCat==="pentacles"?" on":""}" onclick="setStudyCat('pentacles')">펜타클</button>
+      <button class="scat${studyCat==="runes"?" on":""}" onclick="setStudyCat('runes')">룬스톤</button>
+    </div>
+    <div class="study-search"><span class="si">&#x2315;</span><input type="text" placeholder="카드·룬 이름 검색..." value="${studyQ.replace(/"/g,'&quot;')}" oninput="studyQ=this.value;renderStudy()"/></div>
+    <div class="sc-list">${buildStudyCards()}</div>`;
+}
+
+function setStudyCat(cat){studyCat=cat;studyQ="";renderStudy();}
+
+function buildStudyCards(){
+  const q=studyQ.toLowerCase();
+  if(studyCat==="major"){
+    const f=SD.major.filter(c=>!q||c.name.toLowerCase().includes(q)||c.kw.some(k=>k.includes(q)));
+    return f.map(c=>majorCard(c)).join("");
+  }
+  if(studyCat==="runes"){
+    const f=SD.runes.filter(r=>!q||r.name.toLowerCase().includes(q)||r.kor.includes(q)||r.kw.some(k=>k.includes(q)));
+    return f.map(r=>runeCard(r)).join("");
+  }
+  const suit=SD.minor[studyCat];
+  const suitNote=`<div class="suit-note"><b>원소: ${suit.el}</b> — ${suit.note}</div>`;
+  const f=suit.cards.filter(c=>!q||c.rank.includes(q)||c.kw.some(k=>k.includes(q)));
+  return suitNote+f.map((c,i)=>minorCard(c,studyCat,i)).join("");
+}
+
+const SUIT_LABELS={wands:"완드",cups:"컵",swords:"소드",pentacles:"펜타클"};
+
+function ynBadge(yn){
+  if(yn==="Yes")return'<span class="sb2 sb-sage">Yes 카드</span>';
+  if(yn==="No")return'<span class="sb2 sb-rose">No 카드</span>';
+  return'<span class="sb2 sb-gray">Maybe</span>';
+}
+
+function majorCard(c){
+  return`<div class="sc" id="sc-${c.id}"><div class="sc-hdr" onclick="toggleSC('${c.id}')"><div class="sc-top"><div><div class="sc-num">메이저 아르카나 &middot; ${c.num}</div><div class="sc-name">${c.name}</div><div class="sc-sub">${c.sub}</div></div></div><div class="sc-badges"><span class="sb2 sb-lav">원소: ${c.el}</span><span class="sb2 sb-mint">행성: ${c.planet}</span><span class="sb2 sb-lav">별자리: ${c.zodiac}</span>${ynBadge(c.yn)}</div></div><div class="sc-body" id="scb-${c.id}"><div><div class="slabel">핵심 키워드</div><div class="skws">${c.kw.map(k=>`<span class="skw">${k}</span>`).join("")}</div></div><div class="sdiv"></div><div class="sdir"><div class="sdir-box sdir-up"><div class="sdir-t">&#x2191; 정방향</div><div class="sdir-d">${c.up}</div></div><div class="sdir-box sdir-dn"><div class="sdir-t">&#x2193; 역방향</div><div class="sdir-d">${c.dn}</div></div></div><div class="ssym"><div class="slabel">주요 상징</div><div class="ssym-list">${c.sym.map(s=>`<div class="ssym-item"><span class="ssym-t">${s[0]}</span> &mdash; ${s[1]}</div>`).join("")}</div></div></div></div>`;
+}
+
+function minorCard(c,suit,i){
+  const id=suit+i;
+  const sl=SUIT_LABELS[suit];
+  return`<div class="sc" id="sc-${id}"><div class="sc-hdr" onclick="toggleSC('${id}')"><div class="sc-top"><div><div class="sc-num">${sl}</div><div class="sc-name">${c.rank} 오브 ${sl}</div></div></div><div class="sc-badges">${c.kw.slice(0,3).map(k=>`<span class="sb2 sb-lav">${k}</span>`).join("")}</div></div><div class="sc-body" id="scb-${id}"><div><div class="slabel">핵심 키워드</div><div class="skws">${c.kw.map(k=>`<span class="skw">${k}</span>`).join("")}</div></div><div class="sdiv"></div><div class="sdir"><div class="sdir-box sdir-up"><div class="sdir-t">&#x2191; 정방향</div><div class="sdir-d">${c.up}</div></div><div class="sdir-box sdir-dn"><div class="sdir-t">&#x2193; 역방향</div><div class="sdir-d">${c.dn}</div></div></div></div></div>`;
+}
+
+function runeCard(r){
+  const id="rune-"+r.name;
+  return`<div class="sc" id="sc-${id}"><div class="sc-hdr" onclick="toggleSC('${id}')"><div class="sc-top"><div><div class="sc-num">엘더 푸사르크</div><div class="sc-name"><span class="rune-sym">${r.sym}</span> ${r.name}</div><div class="sc-sub">${r.kor}</div></div></div><div class="sc-badges">${r.kw.map(k=>`<span class="sb2 sb-mint">${k}</span>`).join("")}</div></div><div class="sc-body" id="scb-${id}"><div><div class="slabel">의미</div><div class="sdir-d" style="font-size:13px;color:#6a5888;line-height:1.7">${r.meaning}</div></div></div></div>`;
+}
+
+function toggleSC(id){
+  const hdr=document.querySelector("#sc-"+id+" .sc-hdr");
+  const body=document.getElementById("scb-"+id);
+  const open=body.classList.contains("open");
+  body.classList.toggle("open",!open);
+  if(hdr)hdr.classList.toggle("open",!open);
+}
+
 </script>
 </body>
 </html>
