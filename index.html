@@ -132,6 +132,10 @@ textarea{resize:vertical;min-height:88px;line-height:1.7}
 .fc{font-size:12px;padding:5px 12px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#9080b0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;transition:all .15s;backdrop-filter:blur(8px)}
 .fc.on{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
 .elist{display:flex;flex-direction:column;gap:10px}
+
+.sc-img{width:100%;max-width:140px;border-radius:var(--rsm);display:block;margin:0 auto 4px;object-fit:cover;background:rgba(200,180,255,0.1)}
+.sc-img-wrap{display:none;text-align:center;padding:12px 0 4px}
+.sc-img-wrap.open{display:block}
 .study-cats{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
 .scat{font-size:12px;padding:5px 12px;border-radius:var(--rpill);border:0.5px solid rgba(200,180,255,0.3);background:rgba(255,255,255,0.45);color:#9080b0;cursor:pointer;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;transition:all .15s;backdrop-filter:blur(8px)}
 .scat.on{background:rgba(197,207,232,0.6);color:var(--lav-deep);border-color:var(--lav-mid)}
@@ -602,6 +606,35 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
 init();
 
 // ── STUDY TAB ──
+
+const CARD_IMG = {
+  ar00:"images/tarot/00-TheFool.jpg",
+  ar01:"images/tarot/01-TheMagician.jpg",
+  ar02:"images/tarot/02-TheHighPriestess.jpg",
+  ar03:"images/tarot/03-TheEmpress.jpg",
+  ar04:"images/tarot/04-TheEmperor.jpg",
+  ar05:"images/tarot/05-TheHierophant.jpg",
+  ar06:"images/tarot/06-TheLovers.jpg",
+  ar07:"images/tarot/07-TheChariot.jpg",
+  ar08:"images/tarot/08-Strength.jpg",
+  ar09:"images/tarot/09-TheHermit.jpg",
+  ar10:"images/tarot/10-WheelOfFortune.jpg",
+  ar11:"images/tarot/11-Justice.jpg",
+  ar12:"images/tarot/12-TheHangedMan.jpg",
+  ar13:"images/tarot/13-Death.jpg",
+  ar14:"images/tarot/14-Temperance.jpg",
+  ar15:"images/tarot/15-TheDevil.jpg",
+  ar16:"images/tarot/16-TheTower.jpg",
+  ar17:"images/tarot/17-TheStar.jpg",
+  ar18:"images/tarot/18-TheMoon.jpg",
+  ar19:"images/tarot/19-TheSun.jpg",
+  ar20:"images/tarot/20-Judgement.jpg",
+  ar21:"images/tarot/21-TheWorld.jpg",
+};
+["wands","cups","swords","pentacles"].forEach((suit,si)=>{
+  const cap=["Wands","Cups","Swords","Pentacles"][si];
+  for(let i=0;i<14;i++) CARD_IMG[suit+i]=`images/tarot/${cap}${String(i+1).padStart(2,"0")}.jpg`;
+});
 const SD={
   major:[
     {id:"ar00",num:"0",name:"바보 (The Fool)",sub:"새로운 시작 · 순수 · 모험",el:"공기",planet:"천왕성",zodiac:"물병자리",yn:"Yes",kw:["새로운 시작","순수","모험","자유","가능성","충동"],up:"두려움 없이 새로운 여정을 시작할 때. 계획보다 직관을 믿고 뛰어드는 에너지. 순수한 가능성의 문이 열려 있다.",dn:"무모함, 준비 없는 시작. 현실을 외면하거나 책임을 회피하는 상태. 발밑을 먼저 확인하라.",sym:[["절벽 끝","이미 한 발이 허공에 떠 있다. 두려움 없는 도약, 혹은 무지에서 오는 위험을 상징"],["흰 장미","순수함과 새로운 시작. 아직 때묻지 않은 영혼"],["작은 보따리","최소한의 짐만 챙긴다. 과거의 무게를 내려놓은 가벼움"]]},
@@ -766,13 +799,15 @@ function ynBadge(yn){
 }
 
 function majorCard(c){
-  return`<div class="sc" id="sc-${c.id}"><div class="sc-hdr" onclick="toggleSC('${c.id}')"><div class="sc-top"><div><div class="sc-num">메이저 아르카나 &middot; ${c.num}</div><div class="sc-name">${c.name}</div><div class="sc-sub">${c.sub}</div></div></div><div class="sc-badges"><span class="sb2 sb-lav">원소: ${c.el}</span><span class="sb2 sb-mint">행성: ${c.planet}</span><span class="sb2 sb-lav">별자리: ${c.zodiac}</span>${ynBadge(c.yn)}</div></div><div class="sc-body" id="scb-${c.id}"><div><div class="slabel">핵심 키워드</div><div class="skws">${c.kw.map(k=>`<span class="skw">${k}</span>`).join("")}</div></div><div class="sdiv"></div><div class="sdir"><div class="sdir-box sdir-up"><div class="sdir-t">&#x2191; 정방향</div><div class="sdir-d">${c.up}</div></div><div class="sdir-box sdir-dn"><div class="sdir-t">&#x2193; 역방향</div><div class="sdir-d">${c.dn}</div></div></div><div class="ssym"><div class="slabel">주요 상징</div><div class="ssym-list">${c.sym.map(s=>`<div class="ssym-item"><span class="ssym-t">${s[0]}</span> &mdash; ${s[1]}</div>`).join("")}</div></div></div></div>`;
+  const img=CARD_IMG[c.id]?`<div class="sc-img-wrap" id="img-${c.id}"><img class="sc-img" src="${CARD_IMG[c.id]}" alt="${c.name}" loading="lazy"/></div>`:"";
+  return`<div class="sc" id="sc-${c.id}"><div class="sc-hdr" onclick="toggleSC('${c.id}')"><div class="sc-top"><div><div class="sc-num">메이저 아르카나 &middot; ${c.num}</div><div class="sc-name">${c.name}</div><div class="sc-sub">${c.sub}</div></div></div><div class="sc-badges"><span class="sb2 sb-lav">원소: ${c.el}</span><span class="sb2 sb-mint">행성: ${c.planet}</span><span class="sb2 sb-lav">별자리: ${c.zodiac}</span>${ynBadge(c.yn)}</div></div><div class="sc-body" id="scb-${c.id}">${img}<div><div class="slabel">핵심 키워드</div><div class="skws">${c.kw.map(k=>`<span class="skw">${k}</span>`).join("")}</div></div><div class="sdiv"></div><div class="sdir"><div class="sdir-box sdir-up"><div class="sdir-t">&#x2191; 정방향</div><div class="sdir-d">${c.up}</div></div><div class="sdir-box sdir-dn"><div class="sdir-t">&#x2193; 역방향</div><div class="sdir-d">${c.dn}</div></div></div><div class="ssym"><div class="slabel">주요 상징</div><div class="ssym-list">${c.sym.map(s=>`<div class="ssym-item"><span class="ssym-t">${s[0]}</span> &mdash; ${s[1]}</div>`).join("")}</div></div></div></div>`;
 }
 
 function minorCard(c,suit,i){
   const id=suit+i;
   const sl=SUIT_LABELS[suit];
-  return`<div class="sc" id="sc-${id}"><div class="sc-hdr" onclick="toggleSC('${id}')"><div class="sc-top"><div><div class="sc-num">${sl}</div><div class="sc-name">${c.rank} 오브 ${sl}</div></div></div><div class="sc-badges">${c.kw.slice(0,3).map(k=>`<span class="sb2 sb-lav">${k}</span>`).join("")}</div></div><div class="sc-body" id="scb-${id}"><div><div class="slabel">핵심 키워드</div><div class="skws">${c.kw.map(k=>`<span class="skw">${k}</span>`).join("")}</div></div><div class="sdiv"></div><div class="sdir"><div class="sdir-box sdir-up"><div class="sdir-t">&#x2191; 정방향</div><div class="sdir-d">${c.up}</div></div><div class="sdir-box sdir-dn"><div class="sdir-t">&#x2193; 역방향</div><div class="sdir-d">${c.dn}</div></div></div></div></div>`;
+  const img=CARD_IMG[id]?`<div class="sc-img-wrap" id="img-${id}"><img class="sc-img" src="${CARD_IMG[id]}" alt="${c.rank} 오브 ${sl}" loading="lazy"/></div>`:"";
+  return`<div class="sc" id="sc-${id}"><div class="sc-hdr" onclick="toggleSC('${id}')"><div class="sc-top"><div><div class="sc-num">${sl}</div><div class="sc-name">${c.rank} 오브 ${sl}</div></div></div><div class="sc-badges">${c.kw.slice(0,3).map(k=>`<span class="sb2 sb-lav">${k}</span>`).join("")}</div></div><div class="sc-body" id="scb-${id}">${img}<div><div class="slabel">핵심 키워드</div><div class="skws">${c.kw.map(k=>`<span class="skw">${k}</span>`).join("")}</div></div><div class="sdiv"></div><div class="sdir"><div class="sdir-box sdir-up"><div class="sdir-t">&#x2191; 정방향</div><div class="sdir-d">${c.up}</div></div><div class="sdir-box sdir-dn"><div class="sdir-t">&#x2193; 역방향</div><div class="sdir-d">${c.dn}</div></div></div></div></div>`;
 }
 
 function runeCard(r){
@@ -783,8 +818,10 @@ function runeCard(r){
 function toggleSC(id){
   const hdr=document.querySelector("#sc-"+id+" .sc-hdr");
   const body=document.getElementById("scb-"+id);
+  const imgWrap=document.getElementById("img-"+id);
   const open=body.classList.contains("open");
   body.classList.toggle("open",!open);
+  if(imgWrap)imgWrap.classList.toggle("open",!open);
   if(hdr)hdr.classList.toggle("open",!open);
 }
 
