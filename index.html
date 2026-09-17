@@ -773,7 +773,24 @@ function sj_sipseongGroup(dayEl,tEl){if(dayEl===tEl)return"비겁";if(GEN2[dayEl
 function sj_computeSipseong(dayG,tG){const grp=sj_sipseongGroup(dayG.el,tG.el);const g=SIPSEONG_GROUPS2.find(x=>x.group===grp);if(!g)return"";return dayG.yy===tG.yy?g.pyeon.name:g.jeong.name;}
 function sj_buildPillars(chart){const dayG=sj_ganByChar(chart.dg);const defs=[{key:"y",label:"년주 YEAR"},{key:"m",label:"월주 MONTH"},{key:"d",label:"일주 DAY"},{key:"h",label:"시주 HOUR"}];return defs.map(d=>{const gC=chart[d.key+"g"],zC=chart[d.key+"z"],gObj=sj_ganByChar(gC),zObj=sj_zhiByChar(zC),isDay=d.key==="d";const sip=isDay?"일간(나)":sj_computeSipseong(dayG,gObj);return{label:d.label,g:gC,z:zC,gEl:gObj.el,zEl:zObj.el,sipseong:sip,zHidden:zObj.hidden,animal:zObj.animal};});}
 function sj_findRelations(chart){const pos=[["년지",chart.yz],["월지",chart.mz],["일지",chart.dz],["시지",chart.hz]];const found=[];const checks=[{rel:RELATIONS2.find(r=>r.title.startsWith("육합")),cls:"combine"},{rel:RELATIONS2.find(r=>r.title.startsWith("충")),cls:"clash"},{rel:RELATIONS2.find(r=>r.title.startsWith("해")),cls:"harm"}];for(let i=0;i<pos.length;i++)for(let j=i+1;j<pos.length;j++){const[la,ca]=pos[i],[lb,cb]=pos[j];checks.forEach(pc=>{if(!pc.rel)return;if(pc.rel.pairs.some(p=>p===ca+cb||p===cb+ca))found.push({cls:pc.cls,name:pc.rel.title.split("(")[0].trim(),text:`${la} ${ca}와(과) ${lb} ${cb}가 관계를 맺어요.`});});}const samhap=RELATIONS2.find(r=>r.title.startsWith("삼합"));if(samhap)samhap.pairs.forEach(ts=>{const el=(ts.match(/\(([^)]+)\)/)||[])[1]||"";const chars=ts.replace(/\([^)]*\)/,"").split("");if(chars.every(c=>pos.some(p=>p[1]===c))){const mp=pos.filter(p=>chars.includes(p[1]));found.push({cls:"combine",name:"삼합",text:`${mp.map(p=>p[0]+" "+p[1]).join(", ")}가 모여 삼합 ${el} 국을 이뤄요.`});}});return found;}
-function sj_computeStrength(chart){const dayG=sj_ganByChar(chart.dg);const others=[sj_ganByChar(chart.yg),sj_zhiByChar(chart.yz),sj_ganByChar(chart.mg),sj_zhiByChar(chart.mz),sj_zhiByChar(chart.dz),sj_ganByChar(chart.hg),sj_zhiByChar(chart.hz)];let sup=0,drn=0;const cnts={wood:0,fire:0,earth:0,metal:0,water:0};others.forEach(o=>{cnts[o.el]++;});others.forEach(o=>{const g=sj_sipseongGroup(dayG.el,o.el);if(g==="비겁"||g==="인성")sup++;else drn++;});const result=sup>drn?"신강":(sup<drn?"신약":"중화");return{support:sup,drain:drn,counts:cnts,dayEl:dayG.el,result};}
+function sj_computeStrength(chart){const dayG=sj_ganByChar(chart.dg);
+  // 가중치: 월지 3배, 일지 1.5배, 나머지 1배
+  const weighted=[
+    {obj:sj_ganByChar(chart.yg), w:1},
+    {obj:sj_zhiByChar(chart.yz), w:1},
+    {obj:sj_ganByChar(chart.mg), w:1},
+    {obj:sj_zhiByChar(chart.mz), w:3},
+    {obj:sj_zhiByChar(chart.dz), w:1.5},
+    {obj:sj_ganByChar(chart.hg), w:1},
+    {obj:sj_zhiByChar(chart.hz), w:1},
+  ];
+  let sup=0,drn=0;
+  const cnts={wood:0,fire:0,earth:0,metal:0,water:0};
+  weighted.forEach(({obj,w})=>{cnts[obj.el]+=w;});
+  weighted.forEach(({obj,w})=>{const g=sj_sipseongGroup(dayG.el,obj.el);if(g==="비겁"||g==="인성")sup+=w;else drn+=w;});
+  const result=sup>drn?"신강":(sup<drn?"신약":"중화");
+  return{support:sup,drain:drn,counts:cnts,dayEl:dayG.el,result};
+}
 function sj_computeYongsin(str){const dayEl=str.dayEl;if(str.result==="신강"){const p=CTRL2[dayEl],s=Object.keys(CTRL2).find(k=>CTRL2[k]===dayEl);return{primary:p,primaryGroup:"재성",secondary:s,secondaryGroup:"관성"};}if(str.result==="신약"){const p=Object.keys(GEN2).find(k=>GEN2[k]===dayEl);return{primary:p,primaryGroup:"인성",secondary:dayEl,secondaryGroup:"비겁"};}return null;}
 function sj_computeSinsal(chart){const grp=TRIAD2[chart.dz];if(!grp)return[];const tg=SINSAL_T2[grp];const zc=[["년지",chart.yz],["월지",chart.mz],["일지",chart.dz],["시지",chart.hz]];const res=[];[["도화살",tg.dohwa,"매력·인기의 기운"],["역마살",tg.yeokma,"이동·변화의 기운"],["화개살",tg.hwagae,"학문·몰입의 기운"]].forEach(r=>{const hit=zc.filter(z=>z[1]===r[1]);if(hit.length)res.push({name:r[0],desc:r[2],where:hit.map(h=>h[0]).join(", ")});});return res;}
 
@@ -1097,8 +1114,8 @@ function sjRenderAnalysisBlocks(){
     const s=sj_computeStrength(sjChart);
     const order=["wood","fire","earth","metal","water"];
     const max=Math.max(...Object.values(s.counts),1);
-    const bars=order.map(e=>`<div class="sj-bar-row"><div class="sj-bar-lbl">${EL_KR2[e]}</div><div class="sj-bar-track"><div class="sj-bar-fill" style="width:${(s.counts[e]/max*100)||0}%;background:${sjElColor(e)}"></div></div><div class="sj-bar-num">${s.counts[e]}</div></div>`).join("");
-    blocks.push(`<div class="sj-analysis"><h3>신강·신약 판단 <span class="sj-stage-chip">STAGE 2</span></h3><div class="sj-bars">${bars}</div><p style="font-size:12px;color:#6a5888;margin:6px 0">돕는 쪽(비겁+인성) ${s.support}개 · 쓰는 쪽(식상+재성+관성) ${s.drain}개</p><div class="sj-result-pill">${s.result}</div><p style="font-size:12px;color:#6a5888;margin:4px 0">${s.result==="신강"?"일간의 힘이 넘치는 타입. 스스로 밀어붙이는 힘이 강해요.":s.result==="신약"?"일간이 주변에 힘을 많이 내주는 타입. 주변의 도움이 힘이 돼요.":"돕는 힘과 쓰는 힘이 균형을 이루고 있어요."}</p></div>`);
+    const bars=order.map(e=>`<div class="sj-bar-row"><div class="sj-bar-lbl">${EL_KR2[e]}</div><div class="sj-bar-track"><div class="sj-bar-fill" style="width:${(s.counts[e]/max*100)||0}%;background:${sjElColor(e)}"></div></div><div class="sj-bar-num">${Math.round(s.counts[e]*10)/10}</div></div>`).join("");
+    blocks.push(`<div class="sj-analysis"><h3>신강·신약 판단 <span class="sj-stage-chip">STAGE 2</span></h3><div class="sj-bars">${bars}</div><p style="font-size:12px;color:#6a5888;margin:6px 0">돕는 쪽(비겁+인성) ${Math.round(s.support*10)/10}점 · 쓰는 쪽(식상+재성+관성) ${Math.round(s.drain*10)/10}점 <span style="font-size:11px;color:#b0a0c8">(월지 3배·일지 1.5배 가중)</span></p><div class="sj-result-pill">${s.result}</div><p style="font-size:12px;color:#6a5888;margin:4px 0">${s.result==="신강"?"일간의 힘이 넘치는 타입. 스스로 밀어붙이는 힘이 강해요.":s.result==="신약"?"일간이 주변에 힘을 많이 내주는 타입. 주변의 도움이 힘이 돼요.":"돕는 힘과 쓰는 힘이 균형을 이루고 있어요."}</p></div>`);
   } else blocks.push(`<div class="sj-analysis"><h3>신강·신약 판단 <span class="sj-stage-chip">STAGE 2</span></h3><div class="sj-locked">신강신약 단계를 열면 여기서 자동으로 계산해드려요.</div></div>`);
   if(sjStage>=2){
     const s=sj_computeStrength(sjChart),y=sj_computeYongsin(s);
